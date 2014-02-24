@@ -1,0 +1,93 @@
+
+\chapter{Zitieren und Literatur}
+
+Im Besonderen für wissenschaftliche Werke und Abschlussarbeiten ist der korrekte Umgang mit Literaturverweisen eine absolute Notwendigkeit. \LaTeX\ unterstützt den Anwender hier in zwei grundsätzlichen Arten. Zunächst in Form einer einfachen Literaturliste, auf die vom Text aus verwiesen werden kann. Und in der etwas komplexeren Art mit dem BibTeX Tool. Letzteres ist zwar etwas komplizierter, nimmt einem aber so viel Arbeit ab, dass dies der Weg zum Literaturverzeichnis sein sollte. 
+
+\section{Einfaches Verzeichnis}
+
+Der Vollständigkeit halber wird hier auch das einfache Verzeichnis erwähnt. Bei wenigen Verweisen kann dies auch ausreichen. Die Syntax zur Definition eines Literaturverweises ist die folgende:
+\begin{verbatim}
+\bibitem{interne-referenz}Autor(en):
+           \emph{Titel der Veröffentlichung}. Verlag,
+           Stadt -- ggf. Land, Jahr.
+\end{verbatim}
+Beispiel:
+\begin{verbatim}
+\bibitem{Brieskorn1}
+  Egbert Brieskorn,
+  \emph{Lineare Algebra und analytische Geometrie I}.
+  Vieweg, Wiebaden; Braunschweig,
+  1. Auflage, Nachdruck,
+  1983/1985.
+\end{verbatim}
+
+So erzeugte Literatureinträge müssen vom Anwender selbst in die korrekte Reihenfolge gebracht und an der richtigen Stelle ins Dokument eingefügt werden. Dies sollte auf jeden Fall über eine eigenständige \LaTeX-Datei erfolgen, z.B. \texttt{literatur.tex}. Ein vollständiges Literaturverzeichnis sieht so aus:
+\begin{verbatim}
+\begin{thebibliography}{123}
+
+\bibitem{Brieskorn1}
+  Egbert Brieskorn,
+  \emph{Lineare Algebra und analytische Geometrie I}.
+  Vieweg, Wiebaden; Braunschweig,
+  1. Auflage, Nachdruck,
+  1983/1985.
+
+\end{thebibliography}
+\end{verbatim}
+Das \texttt{thebibliography}-Environment stellt die Literaturangaben auf einer eigenen Seite mit der Überschrift "`Literaturverzeichnis"' dar. Zu beachten ist, dass der Parameter 123 nichts weiter bedeutet, als dass möglicherweise dreistellige Literaturangaben entstehen könnten (das sind 1000 Referenzen). Es können durchaus weniger sein, das spielt keine Rolle. 
+
+Eine Referenz im Text auf diese Literaturangabe wird über den Befehl
+\begin{verbatim}
+\cite{Brieskorn1}
+\end{verbatim}
+realisiert. Üblicherweise ist dies dann eine Angabe der Form "`[1]"' (ohne Anführungsstriche). Die Literaturangaben werden nicht sortiert, das bedeutet, sie werden in der Reihenfolge angezeigt, wie sie im literatur.tex File enthalten sind. 
+
+\section{Das BibTeX Tool}
+
+Eine sehr viel elegantere Methode zur Verwaltung der Literaturangaben bietet das BibTeX Tool, sie werden in einer quasi Datenbank abgelegt. Der Begriff "`Datenbank"' ist an dieser Stelle etwas hoch gegriffen, die Literaturangaben werden lediglich in einem File gesammelt, unabhängig davon, ob sie jemals verwendet werden, oder nicht. Das erspart Arbeit (auch wenn es nicht so klingt), denn der Anwender braucht sich keine Gedanken darüber zu machen, ob er je die Literaturangabe benötigt. Macht er keine Referenz darauf, taucht sie nicht im Literaturverzeichnis auf. Zusätzlich werden die Literaturangaben automatisch nach dem Nachnamen des Autors alphabetisch sortiert. 
+
+\subsection{Aufbau der Datenbank}
+
+BibTeX hat ein eigenes Format, wie Literatur Referenzen gespeichert werden. An einem Beispiel wollen wir uns das näher ansehen:
+\begin{verbatim}
+@BOOK{Brieskorn1983, 
+	title="{Lineare Algebra und Analytische Geometrie I: 
+	Noten zu einer Vorlesung mit historischen Anmerkungen 
+	von Erhard Scholz (German Edition)}",
+	author={Egbert Brieskorn},
+	publisher={Vieweg+Teubner Verlag},
+	year={1983},
+	month={1},
+	edition={1983},
+	isbn={9783528085612},
+	url={http://amazon.com/o/ASIN/3528085614/},
+	price={$49.99},
+	totalpages={636},
+	timestamp={2014.01.30},
+}
+\end{verbatim}
+Das sieht in keiner Weise einfacher aus, als die Angabe oben. Aber das täuscht, denn letztlich brauchen wir nur diejenigen Informationen, die auch wirklich angezeigt werden. Also diese:
+\begin{verbatim}
+@BOOK{Brieskorn1983, 
+	title="{Lineare Algebra und Analytische Geometrie I: 
+	Noten zu einer Vorlesung mit historischen Anmerkungen 
+	von Erhard Scholz (German Edition)}",
+	author={Egbert Brieskorn},
+	publisher={Vieweg+Teubner Verlag},
+	year={1983},
+	month={1},
+	edition={1983},
+}
+\end{verbatim}
+Unabhängig davon ist das BibTeX Format aber allgegenwärtig, sodass viele Bibliotheken und Journale bereits BibTeX Informationen zu ihren Veröffentlichungen anbieten. Diese müssen dann einfach nur kopiert und in die BibTeX Datenbank hinein kopiert werden. 
+
+Das oben angegebene Buch von Egbert Brieskorn würde dann als BibTeX Eintrag in der folgenden Art zitiert: \cite{Brieskorn1983a}, der zweite Band ist \cite{Brieskorn1983b}
+
+In Ihrem \TeX-Dokument müssen dann die Zeilen
+\begin{verbatim}
+\bibliographystyle{amsalpha}
+\bibliography{literature}
+\end{verbatim}
+an der Stelle erscheinen, wo das Literaturverzeichnis auftauchen soll, also meistens am Ende. 
+
+Wir verwenden hier den \texttt{amsalpha}-Style für die Literaturreferenzen. Das führt zu Referenzen der form \cite{Raymond:2014uha}. Der \texttt{plain}-Style würde zu Referenzen der Form [1], [2], usw. führen.

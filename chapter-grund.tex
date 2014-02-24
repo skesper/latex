@@ -1,0 +1,262 @@
+
+\chapter{Grundlagen}
+
+\section{Was ist \LaTeX ?}
+
+Ein klein-wenig Geschichte. 1977 begann die Entwicklung von \TeX\ durch Prof. Donald E. Knuth. Laut Hören-Sagen war Knuth mit dem Satz seines grundlegenden Werkes "`The Art of Computer Programming"' durch seinen Verlag Ad\-di\-son-Wesley unzufrieden. Daraufhin beschloss er, sein eigenes Satz System zu entwickeln. Was als Projekt "`über den Sommer"' hin konzipiert war, dauerte insgesamt elf Jahre. 
+
+\TeX\ besteht zunächst aus einem Satz von Programmen. Diese sind einem Compiler nicht unähnlich. Der \TeX-Compiler liest den "`Source-Code"' ein und bereitet diesen in einer vom Ausgabe-Gerät unabhängigen Weise auf (englisch Device Independent, abk. DVI). Des Weiteren gab es ein Anzeigeprogramm für DVI Dateien mit einer Druckfunktion, sowie weitere Programme mit unterschiedlichsten Zielen. Wichtig dabei ist noch das dvi2ps Tool, das Device Independent Dateien in sogenannte PostScript (PS) Dateien umwandeln konnte. PostScript ist eine Druckerbeschreibungssprache, die besonders in den achtziger und neunziger Jahren Verwendung fand. Mit Aufkommen des PDF Formats spielte PostScript aber keine ernsthafte Rolle mehr. Heute wird auch oft das pdftex und pdflatex verwendet, deren Ausgabe direkt, ohne Umweg über das DVI Format, in PDF Dateien erfolgt. 
+
+In der Folge wurden viele Zusatztools und Erweiterungen zu \TeX\ geschrieben, sodass aus dem ursprünglich einfachen Satzsystem für wissenschaftliche Veröffentlichungen ein unglaublich mächtiges Tool geworden ist. 
+
+Eine der wichtigsten und zentralen Erweiterungen ist das sogenannte Lamport \TeX, ein Sammlung von Makros, die durch Leslie Lamport anfang der 1980er Jahre entwickelt und veröffentlicht wurde. Von Lamports Namen leitet sich die Vorsilbe "`La"' in \LaTeX\ ab.
+
+\section{Wo beginnen wir?}
+
+Aufgrund dessen, dass man mit \LaTeX\ ohne hin alles tun kann, was man in \TeX\ tun kann -- und noch viel, viel mehr, fangen wir direkt mit \LaTeX\ an. Zuerst \TeX\ zu lernen bringt keinen ernsthaften Vorteil. 
+
+\subsection{Das minimale Dokument}
+
+Wie in der Programmierung üblich, beginnen wir mit einem "`Hello World"'
+\begin{verbatim}
+\documentclass{article}
+
+\begin{document}
+Hello World.
+\end{document}
+\end{verbatim}
+und speichern dieses in einer Datei \texttt{hello.tex}. Der Befehl zum Übersetzen
+\begin{verbatim}
+pdflatex hello.tex
+\end{verbatim}
+daraufhin erfolgt diese Ausgabe:
+\footnotesize
+\begin{verbatim}
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX)
+ restricted \write18 enabled.
+entering extended mode
+(./hello.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
+c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
+h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
+h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
+ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
+rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian,
+kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
+ polish, portuguese, romanian, romansh, russian, sanskrit, serbian, serbianc, s
+lovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian,
+welsh, loaded.
+(d:/texlive/2012/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(d:/texlive/2012/texmf-dist/tex/latex/base/size10.clo)) (./hello.aux) [1{d:/tex
+live/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./hello.aux) )<d:/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on hello.pdf (1 page, 11852 bytes).
+Transcript written on hello.log.
+\end{verbatim}
+\normalsize
+Diese Informationen sollten Sie nicht einschüchtern. \LaTeX\ ist ziemlich rede-freudig und informiert einen über alle wichtigen und unwichtigen Details. Gehen wir hier einmal am Beispiel die Ausgaben durch, doch das werden wir nur einmal tun. Später verwenden wir einen Editor, der uns die Arbeit der Analyse des Logfiles abnehmen wird. 
+
+Die Ausgabe beginnt mit einer Begrüßung und der Programmversion. Danach wird \LaTeX2e aufgerufen in der Version vom 27.06.2011. Es folgt das Laden des Babel Pakets das einen darüber informiert, für welche Sprachen Silben-Trennungsinformationen vorhanden sind. Danach schließt sich ein interessanter Teil an, nämlich das Laden der Dokumentklasse, in unserem Fall die "`article.cls"'. Anschließend folgen Ausgaben über die Zwischendateien und letztlich die Angabe, dass der "`Output"' in die Datei "`hello.pdf"' geschrieben wurde. Und zwar eine Seite mit 11852 Bytes Länge. Sowie Informationen des Vorgangs in der Datei "`hello.log"' abgelegt wurden. 
+
+Ich erspare mit die Darstellung der hello.pdf Datei. Sie besteht aus einer Din-A4 Seite mit den beiden Worten "`Hello World"'.
+
+In Kapitel \ref{chap:doc} gehe ich darauf ein, welche Bedeutung die Dokumentklasse hat. Hier sei nur erwähnt, dass sie eine Art Schablone und/oder Korsett für unser Dokument darstellt. Die Dokumentklasse bestimmt in weiten Teilen das Aussehen des Dokuments, sofern man dies nicht wieder ändert. Und sie enthält ggf. Voreinstellungen sowie neue Befehle, die vom Hersteller der Dokumentklasse für bestimmte Zwecke erzeugt und zusammengestellt wurden. 
+
+\section{Distribution und Installation}
+
+Es gibt diverse \TeX-Distributionen. Eine der umfangreichsten und gleichzeitig meist-verwendeten ist die \TeX-Live Distribution der \TeX-User-Group (TUG). Unter der URL 
+\begin{verbatim}
+https://www.tug.org/texlive/acquire-iso.html
+\end{verbatim}
+bekommen Sie ein ISO Image der gerade aktuellen \TeX-Live Distribution. Es gibt auch einen sogenannten "`net-installer"'. Ich habe diesen diverse Male ausprobiert, scheiterte aber immer wieder an (vermutlich) meinem Internetprovider. Bei mir schlug der Netzinstalliervorgang immer nach einigen Stunden fehl und ich konnte von Neuem beginnen. Hinzu kommt, dass der Download des ISO Files i.a. schneller ist, als für jede Datei einzeln einen Download durch den Net-Installer durchführen zu lassen. 
+
+Das ISO File kann man entweder als Laufwerk Mounten\footnote{Hierfür braucht man eine zusätzliche Software, z.B. das kostenlose Virtual CloneDrive der Firma slysoft.com. } oder brennt sie auf ein DVD Rohling. 
+
+In beiden Fällen erfolgt dann die Installation identisch wie mit dem Net-Installer nur mit dem Unterschied, dass die Ressourcen nicht aus dem Internet nachgeladen werden. 
+
+Bei der Installation wird man nach einigen Informationen gefragt. Zum Beispiel Installationsort, bevorzugte Papiergröße usw. Nach der Installation hat man ein etwa drei Giga-Byte großen Ordner auf der Festplatte, soviel Platz sollte also noch mindestens auf Ihrer Festplatte frei sein.
+
+\section{Editoren}
+
+Auch wenn man \LaTeX\ Dokumente ohne einen "`vernünftigen"' Editor schreiben kann und die Ausführung der Befehle von Hand in einer Shell möglich ist, sollte man überlegen, ob dies eine gute Vorgehensweise ist. 
+
+Es gibt einige \LaTeX\ Editoren und jeder von ihnen macht dem Anwender das Leben auf verschiedene Art einfacher. Denn "`let's face it"' \LaTeX\ zu schreiben ist nicht immer ein Vergnügen. Besonders dann nicht, wenn man lange Befehle schreiben muss, um etwas sehr einfaches zu erreichen. So wie ich hier 
+\begin{verbatim}
+\begin{equation}
+a^2+b^2=c^2
+\end{equation}
+\end{verbatim}
+schreiben muss, um die Gleichung
+\begin{equation}
+a^2+b^2=c^2
+\end{equation}
+zu setzen.
+
+Auch wenn ich hier drei Editoren anspreche, so ist die Wahl des geeigneten Editors immer eine Frage des persönlichen Geschmacks. Manche wollen, dass der Editor möglichst schnell und leichtgewichtig ist und verzichten dafür auf Funktionalität. Andere bevorzugen eine integrierte und möglichst weitgehende Unterstützung beim Schreiben von \TeX-Makros. Die Entscheidung, welcher Editor zum Einsatz kommt, sollten Sie in Ruhe alleine treffen. Alle diese Editoren haben gewisse Vor- und Nachteile. Es spricht nichts dagegen, auch mehrere Editoren für verschiedene Aufgaben zu verwenden. Machen Sie sich selbst ein Bild!
+
+
+\subsection{TeXworks}
+
+TeXworks wird während der Installation von \TeX-Live Distribution gleich mit installiert -- sofern man ihn nicht abgewählt hat. TeXworks ist ein zwei Fester Editor, im linken Fenster schreibt man den \TeX-Code und im rechten wird das Dokument in PDF oder DVI dargestellt. Folgende Features sind enthalten:
+
+\begin{enumerate}
+\item Freie Wahl des \TeX-Übersetzers. 
+\item Syntax Highlighting
+\item Schnell und schlank, d.h. schnell geladen.
+\end{enumerate}
+
+Leider kann ich nicht viel mehr über diesen Editor sagen. Er ist sicher ausreichend, um mit \LaTeX\ zu arbeiten, aber Unterstützung bekommt man nur in sehr eingeschränkter Form.
+
+\subsection{TeXstudio und TeXmaker}
+
+TeXstudio und TeXmaker sind relativ ähnliche Editoren mit einem vergleichbaren Funktionsumfang. Ich bin bei beiden nicht in die allerletzten Tiefen vorgedrungen, vielleicht unterscheiden sie sich doch noch irgendwo, aber auf den ersten Blick fällt es mir schwer einen markanten Unterschied festzustellen. 
+
+Allerdings ist das TeXstudio mein bevorzugter \LaTeX-Editor. Das liegt vor allem an zwei kleinen Features: 
+
+\begin{enumerate}
+\item Wenn Sie ein längeres Dokument erzeugen, werden Sie Kapitel in eigene Dateien auslagern, um einen besseren Überblick zu bekommen (siehe Abschnitt \ref{sect:import}). Diese importierten Dateien sind keine vollständigen \LaTeX-Dokumente. Wenn man sie zu übersetzen versucht, schlägt dies fehl. TeXstudio versteht die Struktur und wird, wenn Sie innerhalb einer Kapiteldatei arbeiten, das Gesamtdokument übersetzen, nicht die Datei, an der Sie gerade arbeiten. Dies ist zwar ein kleines aber ungemein hilfreiches Feature. 
+\item Das zweite ist ein Feature, das aus der Programmierung bekannt ist: Hat man ein import/include Statement oder eine Referenz auf einen Label (siehe Abschnitt \ref{sect:verweise}), so kann man mit der STRG-Taste auf diese Anweisung klicken und folgt diesen -- quasi wie einem Link -- zur importierten Datei oder der Label Definition. Das erspart viel Sucherei vor allem dann, wenn die Label Definition in einer anderen Datei liegt. 
+\end{enumerate}
+
+Im restlichen Betrieb tun sich TeXstudio und TeXmaker nicht viel, sie sind vom Umfang und von der Nutzung her sehr ähnlich. Stellt man das Oberflächendesign auf "`modern"' -- das geht bei beiden -- kann man sie kaum voneinander unterscheiden. Ich vermute, dass dies daran liegt, weil beide Editoren das Qt-Framework für ihr GUI verwenden. 
+
+
+
+
+\section{Showroom}
+
+Hier ein paar Pakete, die Einsicht in die Leistungsfähigkeit von \LaTeX\ bieten sollen.
+
+\subsection{Skak Paket}
+
+Schach-Enthusiasten werden sich darüber freuen. Das Skak Paket bietet auf sehr einfache Weise die Möglichkeit Schachpartien zu dokumentieren. Die Eingabe folgt dabei der üblichen Nomenklatur. Das in Abbildung \ref{fig:rybov} dargestellte Schachrett wurde mit den folgenden Befehlen erzeugt:
+\begin{verbatim}
+\newgame
+\mainline{1.e4 e5}
+
+\mainline{2. Nf3 Nc6 3.Bb5}
+
+\showboard
+\end{verbatim}
+
+\bigskip
+
+\newgame
+\mainline{1.e4 e5}
+
+\mainline{2. Nf3 Nc6 3.Bb5}
+
+\begin{figure}[h]
+\centering
+\showboard
+\caption{Die Rybov-Variante}
+\label{fig:rybov}
+\end{figure}
+
+\newpage
+\subsection{Zeichnungen mit Ti\textit{k}Z}
+
+Mit dem Ti\textit{k}Z und PGF Paket hat man unter \LaTeX\ eine herausragende Möglichkeit Zeichnungen herzustellen. Das Beispiel in Abbildung \ref{fig:tikz} ist aus dem Ti\textit{k}Z Manual \cite{tikman} von Till Tantau entnommen.
+
+\begin{figure}[h]
+\begin{tikzpicture}
+[scale=2,line cap=round,
+% Styles
+axes/.style=,
+important line/.style={very thick},
+information text/.style={rounded corners,fill=red!10,inner sep=1ex}]
+% Local definitions
+\def\costhirty{0.8660256}
+% Colors
+\colorlet{anglecolor}{green!50!black}
+\colorlet{sincolor}{red}
+\colorlet{tancolor}{orange!80!black}
+\colorlet{coscolor}{blue}
+% The graphic
+\draw[help lines,step=0.5cm] (-1.4,-1.4) grid (1.4,1.4);
+\draw (0,0) circle (1cm);
+\begin{scope}[axes]
+\draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$} coordinate(x axis);
+\draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$} coordinate(y axis);
+\foreach \x/\xtext in {-1, -.5/-\frac{1}{2}, 1}
+\draw[xshift=\x cm] (0pt,1pt) -- (0pt,-1pt) node[below,fill=white] {$\xtext$};
+\foreach \y/\ytext in {-1, -.5/-\frac{1}{2}, .5/\frac{1}{2}, 1}
+\draw[yshift=\y cm] (1pt,0pt) -- (-1pt,0pt) node[left,fill=white] {$\ytext$};
+\end{scope}
+\filldraw[fill=green!20,draw=anglecolor] (0,0) -- (3mm,0pt) arc(0:30:3mm);
+\draw (15:2mm) node[anglecolor] {$\alpha$};
+\draw[important line,sincolor]
+(30:1cm) -- node[left=1pt,fill=white] {$\sin \alpha$} (30:1cm |- x axis);
+\draw[important line,coscolor]
+(30:1cm |- x axis) -- node[below=2pt,fill=white] {$\cos \alpha$} (0,0);
+\path [name path=upward line] (1,0) -- (1,1);
+\path [name path=sloped line] (0,0) -- (30:1.5cm);
+\draw [name intersections={of=upward line and sloped line, by=t}]
+[very thick,orange] (1,0) -- node [right=1pt,fill=white]
+{$\displaystyle \tan \alpha \color{black}=
+\frac{{\color{red}\sin \alpha}}{\color{blue}\cos \alpha}$} (t);
+\draw (0,0) -- (t);
+\draw[xshift=2.2cm]
+node[right,text width=6cm,information text]
+{
+The {\color{anglecolor} angle $\alpha$} is $30^\circ$ in the
+example ($\pi/6$ in radians). The {\color{sincolor}sine of
+$\alpha$}, which is the height of the red line, is
+\[
+{\color{sincolor} \sin \alpha} = 1/2.
+\]
+By the Theorem of Pythagoras ...
+};
+\end{tikzpicture}
+\caption{Beispiel Zeichnung mit dem TikZ Package}
+\label{fig:tikz}
+\end{figure}
+
+
+\subsection{Sonstiges}
+
+\begin{figure}[h]
+\centering
+\begin{minipage}[b]{0.5\textwidth}
+\frakfamily
+\yinipar{L}orem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+\end{minipage}
+\caption{Altertümliche anmutende Texte mit dem \texttt{yfonts} Paket}
+\label{fig:lorem}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\recycle
+\Recycle
+\RECYCLE
+\caption{Aus dem \texttt{recycle} Paket}
+\label{fig:recycle}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+{\fontsize{64}{66} \staveXLV \staveXLIII \staveXX}
+\caption{\texttt{staves} Paket, Bedeutung nachzulesen auf der Website des Museum of Icelandic Sorcery and Witchcraft}
+\label{fig:staves}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+{\fontsize{48}{50} \textpmhg{Rekin}}
+\caption{\texttt{hieroglf} Paket zur Darstellung ägyptischer Hieroglyphen.}
+\label{fig:hiero}
+\end{figure}
+
+Man kann wohl ohne Übertreibung sagen, dass \LaTeX\ eines der vielseitigsten Satzprogramme ist, vor allem auch deswegen, weil viele \LaTeX-Enthusiasten auf der ganzen Welt unermüdlich an der Weiterentwicklung der Pakete und damit den Fähigkeiten von \LaTeX\ arbeiten. Ob es Fraktur-Fonts wie in Abbildung \ref{fig:lorem} sind, oder Sondersymbole wir in Abbildung \ref{fig:recycle}, Symbole der Isländischen Folklore in Abbildung \ref{fig:staves} oder auch ägyptische Hieroglyphen wie in Abbildung \ref{fig:hiero}, wenn man etwas sucht, findet man für fast alle Anwendungsgebiete ein \LaTeX\ Paket -- solange dieses Gebiet etwas mit der Veröffentlichung von Dokumenten zu tun hat. 
+
+\section{Zusammenfassung}
+
+Für die meisten (selbst so manch exotische) Arten von Veröffentlichungen bietet \LaTeX\ ein Paket zur Unterstützung an. Auch wenn die meisten dieser Pakete bereits in der \TeX-Live Distribution enthalten sind und man eigentlich nur im Installationsordner nachschauen müsste, ist eine kurze Google Suche nach existierenden Paketen immer sinnvoll. Denn man findet oft auch gleichzeitig gute und vielseitige Beispiele zum Einsatz des Pakets. 
+
+Versucht man ein Paket mit dem \texttt{$\backslash$usepackage} Befehl zu verwenden und schlägt dies fehl, dann muss man dieses Paket separat installieren. Dies wird in Kapitel \ref{chap:instpack} noch erklärt. Alle, die bereits installiert sind, können nach der Deklaration über den usepackage Befehl verwendet werden.
+
+

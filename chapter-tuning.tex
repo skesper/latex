@@ -1,0 +1,77 @@
+
+\chapter{Feintuning}
+
+
+\section{Verweise}\label{sect:verweise}
+
+TODO label und ref.
+
+\section{Index}
+
+TODO
+
+
+\section{Aufzählungen}
+
+\subsection{Enumerierungen}
+
+Es gibt verschiedene Aufzählungsarten in \LaTeX. Beginnen wir mit der einfachen "`Aufzählung"'. Diese wird durch das "`enumerate"'-Environment erreicht.
+\begin{verbatim}
+\begin{enumerate}
+\item erster
+\item zweiter ...
+\item dritter ...
+\end{enumerate}
+\end{verbatim}
+wird in der Ausgabe zu:
+\begin{enumerate}
+\item erster
+\item zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter zweiter
+\item dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter dritter 
+\end{enumerate}
+
+Wie man sehen kann, werden auch längere Angaben so eingerückt, dass die Nummerierung klar zu sehen ist. Der \texttt{item}-Befehl hat ein Argument, das in eckigen Klammern angegeben werden kann. Es ersetzt die Nummer und dies führt dazu, dass kein Erhöhen der Nummer stattfindet. Gibt man also an der dritten Stelle im enumerate-Envrionment den Befehl
+\begin{verbatim}
+\item[-] dritter
+\end{verbatim}
+an, so wird keine Nummer angegeben, sondern der "`-"' (Dash) und ein vierter Eintrag wird die Nummer drei bekommen.
+
+Am besten einfach mal etwas damit herumspielen, dann ergeben sich die Besonderheiten schon von selbst.
+
+\subsection{Bullet-Liste}
+
+Die nächste Möglichkeit der Aufzählungen ist nicht nummeriert, hierfür wird das "`itemize"'-Environment verwendet. Das Aufzählungszeichen ist per Default der "`\textbullet"' (\texttt{textbullet}).
+\begin{verbatim}
+\begin{itemize}
+\item erster
+\item[\textasteriskcentered] zweiter
+\item dritter
+\end{itemize}
+\end{verbatim}
+
+\begin{itemize}
+\item erster
+\item[\textasteriskcentered] zweiter
+\item dritter
+\end{itemize}
+Wie auch bei den Aufzählungen kann mit den eckigen Klammern das Aufzählungszeichen verändert werden. 
+
+\subsection{Dingbat Listen}
+
+Das \texttt{pifont} Paket bietet ein \texttt{dinglist}-Environment, indem das Aufzählungszeichen als Parameter übergeben werden kann. Hier z.B. die Nummer 229 -- ein Pfeil.
+
+\begin{verbatim}
+\begin{dinglist}{229}
+  \item foo
+  \item bar
+\end{dinglist}
+\end{verbatim}
+
+\begin{dinglist}{229}
+  \item foo
+  \item bar
+\end{dinglist}
+
+\section{\texttt{include} und \texttt{import}}\label{sect:import}
+
+TODO

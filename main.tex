@@ -1,0 +1,151 @@
+\documentclass[]{book}
+
+% Damit wir Umlaute verwenden können. Achtung! UTF-8 Encoding, nicht jeder Editor kann das.
+% Besonders Windows Editoren verwenden oft das windows-1252 bzw. Latin-1252 Encoding.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+% Wird für \printindex benötigt.
+\usepackage{makeidx}
+
+% Andere Fonts
+%\usepackage{cmbright}
+\usepackage{fouriernc}
+
+% AMS Mathe Bibliotheken
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+% Bilder einfügen.
+\usepackage{graphicx}
+
+% Dingbats
+\usepackage{pifont}
+
+% Beispiel Fähigkeiten über Packages
+\usepackage{skak}
+\usepackage{yfonts}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{backgrounds}
+\usepackage{recycle}
+\usepackage{staves}
+\usepackage{hieroglf}
+
+\usepackage{pdfpages}
+
+\makeatletter
+
+\tikzset{%
+  fancy quotes/.style={
+    text width=\fq@width pt,
+    align=justify,
+    inner sep=1em,
+    anchor=north west,
+    minimum width=\textwidth,
+  },
+  fancy quotes width/.initial={.8\textwidth},
+  fancy quotes marks/.style={
+    scale=8,
+    text=white,
+    inner sep=0pt,
+  },
+  fancy quotes opening/.style={
+    fancy quotes marks,
+  },
+  fancy quotes closing/.style={
+    fancy quotes marks,
+  },
+  fancy quotes background/.style={
+    show background rectangle,
+    inner frame xsep=0pt,
+    background rectangle/.style={
+      fill=gray!25,
+      rounded corners,
+    },
+  }
+}
+
+\newenvironment{fancyquotes}[1][]{%
+\noindent
+\tikzpicture[fancy quotes background]
+\node[fancy quotes opening,anchor=north west] (fq@ul) at (0,0) {!};
+\tikz@scan@one@point\pgfutil@firstofone(fq@ul.east)
+\pgfmathsetmacro{\fq@width}{\textwidth - 2*\pgf@x}
+\node[fancy quotes,#1] (fq@txt) at (fq@ul.north west) \bgroup}
+{\egroup;
+\node[overlay,fancy quotes closing,anchor=east] at (fq@txt.south east) {};
+\endtikzpicture}
+
+
+% Das eigentliche Dokument
+\begin{document}
+
+\frontmatter
+\pagestyle{empty}
+
+% --------------- TITLE PAGE
+\begin{flushright}
+{\Large Stephan Kesper}
+\vskip 3cm
+{\fontsize{48}{52} \selectfont \LaTeX}
+\vskip 1cm
+{\Large \textsl{Eine Einführung mit Best Practices}}
+\vskip 5cm
+\today
+\vskip 2cm
+\vfill
+\fbox{
+{\fontsize{28}{50} \textpmhg{a}} \begin{minipage}[b]{75px}
+\begin{flushright}
+A RAVEN\\
+FRAMEWORK\\
+PROJECT
+\end{flushright}
+\end{minipage}}
+\end{flushright}
+%\includegraphics{../../../License/by-nc-sa.png}
+% --------------- TITLE PAGE
+\newpage
+
+
+
+\setcounter{page}{1}
+
+\tableofcontents
+\newpage
+
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+
+\mainmatter
+
+\include{chapter-grund}
+
+\include{chapter-doc}
+
+\include{chapter-cite}
+
+\include{chapters}
+
+\include{chapter-formel}
+
+\include{chapter-tuning}
+
+\backmatter
+
+\bibliographystyle{amsalpha}
+\bibliography{literature}
+
+\printindex
+
+\end{document}

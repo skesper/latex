@@ -1,0 +1,132 @@
+
+\chapter{Formelsatz}\label{chap:formel}
+
+Eine der wichtigsten Anwendungen von \LaTeX\ ist der Formelsatz. Es ist zum quasi Standard geworden, sobald Formeln in einer Veröffentlichung auftauchen. Ich hoffe, in den vorherigen Kapiteln deutlich gemacht zu haben, dass es sich auch dann lohnt \LaTeX\ einzusetzen, wenn man keine Formeln verwendet. Aber sollte man es tun, führt praktisch kein Weg an \LaTeX\ vorbei.
+
+Mathematische Formeln werden in verschiedenen Situationen eingesetzt. Im Fließtext (inline) und zum anderen als zentrierte Formel in einem eigenen Absatz (Display-Style). Alles, was über den Formelsatz im Display-Style gesagt werden kann, trifft auch für den inline Satz zu. Allerdings werden die Formeln im inline Satz meist flacher dargestellt, was dazu führt, dass hoch- oder tiefgestellte Informationen gegebenenfalls an anderen Stellen auftauchen, doch dazu später mehr.
+
+Der Display-Style von Formeln stellt diese -- wie gesagt -- zentriert in einem eigenen Absatz dar:
+
+\begin{equation}
+\mathcal{F}(f)(t) = \frac{1}{(2\pi)^{\frac{n}{2}}} 
+	\int_{\mathbb{R}^n} f(x)e^{-itx} dx
+\end{equation}
+
+Der Display-Style wird eingesetzt, wenn Code im \texttt{equation}-Environment geschrieben wird:
+\begin{verbatim}
+\begin{equation}
+\mathcal{F}(f)(t) = \frac{1}{(2\pi)^{\frac{n}{2}}} 
+	\int_{\mathbb{R}^n} f(x)e^{-itx} dx
+\end{equation}
+\end{verbatim}
+Das \texttt{equation}-Environment ist die gebräuchlichste Umgebung für eine Formel. Sie beinhaltet auch eine Nummerierung, die per Default an den rechten Seitenrand gesetzt wird. Will man auf eine bestimmte Formel verweisen, sollte diese mit einem Label versehen werden und über den \texttt{ref}-Befehl referenziert werden. Dies wird in Abschnitt \ref{sect:verweise} noch genauer beschrieben.
+
+Will man keine Nummerierung der Formel, kann das \texttt{equation*}-En\-vi\-ron\-ment verwendet werden:
+\begin{verbatim}
+\begin{equation*}
+\mathcal{F}(f)(t) = \frac{1}{(2\pi)^{\frac{n}{2}}} 
+	\int_{\mathbb{R}^n} f(x)e^{-itx} dx
+\end{equation*}
+\end{verbatim}
+ergibt
+\begin{equation*}
+\mathcal{F}(f)(t) = \frac{1}{(2\pi)^{\frac{n}{2}}} 
+	\int_{\mathbb{R}^n} f(x)e^{-itx} dx
+\end{equation*}
+Nicht nummerierte Formel können auch mit der Abkürzung
+\begin{verbatim}
+\[
+\mathcal{F}(f)(t) = \frac{1}{(2\pi)^{\frac{n}{2}}} 
+	\int_{\mathbb{R}^n} f(x)e^{-itx} dx
+\]
+\end{verbatim}
+geschrieben werden. Verwenden Sie nicht den von \TeX\ bekannten "`\$\$"' (doppel-Dollar) Display-Satz. Dieser ist im \LaTeX-Umfeld nicht mehr gebräuchlich und führt unter bestimmten Umständen zu einem falschen Abstands- und Umbruchverhalten.
+
+\section{Griechische Zeichen}
+
+Die in Tabelle \ref{tab:greek} dargestellten griechischen Zeichen stehen nur im Mathematik Modus zur Verfügung -- abgesehen natürlich von den Zeichen, die durch normale lateinische Zeichen dargestellt werden. Daher sind sie sinnvoll nur dann zu verwenden, wenn sie in Formeln vorkommen. 
+
+Sollen Absätze oder ganze Texte in griechisch formatiert werden, müssen Pakete verwendet werden, bzw. falls der gesamte Text in griechisch gesetzt werden soll, reicht es das Font-Encoding anzupassen.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{c|l|c|l|l}
+\hline
+\textbf{Kleiner Buchstabe} & \textbf{\LaTeX-Code} & \textbf{Großbuchstabe} & \textbf{\LaTeX-Code} & \textbf{Bezeichnung} \\
+\hline
+$\alpha $ & $\backslash$alpha & $A $ & A & Alpha \\
+$\beta $ & $\backslash$beta & $B $ & B & Beta \\
+$\gamma $ & $\backslash$gamma & $\Gamma $ & $\backslash$Gamma & Gamma \\
+$\delta $ & $\backslash$delta & $\Delta $ & $\backslash$Delta & Delta \\
+$\epsilon$ & $\backslash$epsilon  & $E $ & E & Epsilon \\
+$\zeta $ & $\backslash$zeta & $Z $ & Z & Zeta \\
+$\eta $ & $\backslash$eta & $H $ & H &  Eta\\
+$\theta $ & $\backslash$theta & $\Theta $ & $\backslash$Theta & Theta \\
+$\iota $ & $\backslash$iota & $I $ & I & Iota \\
+$\kappa $ & $\backslash$kappa & $K $ & K & Kappa \\
+$\lambda $ & $\backslash$lambda & $\Lambda $ & $\backslash$Lambda & Lambda \\
+$\mu $ & $\backslash$mu & $M $ & M & Mu \\
+$\nu $ & $\backslash$nu & $N $ & N & Nu \\
+$\xi $ & $\backslash$xi & $\Xi $ & $\backslash$Xi &  Xi \\
+$o $ & o & $O $ & O & Omicron \\
+$\pi $ & $\backslash$pi & $\Pi $ & $\backslash$Pi & Pi \\
+$\rho $ & $\backslash$rho & $P $ & P & Rho \\
+$\sigma $ & $\backslash$sigma & $\Sigma $ & $\backslash$Sigma & Sigma  \\
+$\tau $ & $\backslash$tau & $T $ & T & Tau \\
+$\upsilon $ & $\backslash$upsilon & $\Upsilon $ & $\backslash$Upsilon & Ypsilon \\
+$\phi $ & $\backslash$phi & $\Phi $ & $\backslash$Phi & Phi \\
+$\chi $ & $\backslash$chi & $X $ & X & Chi \\
+$\psi $ & $\backslash$psi & $\Psi $ & $\backslash$Psi & Psi \\
+$\omega $ & $\backslash$omega & $\Omega $ & $\backslash$Omega & Omega \\
+\hline
+\end{tabular}
+\caption{Griechische Buchstaben}
+\label{tab:greek}
+\end{table}
+
+\section{Exponenten und Indizes}
+
+Exponenten werden mit dem $\hat{ }$\ -Zeichen hochgestellt. Das "`hoch"'-Zeichen gilt immer nur für das darauf folgende Zeichen. Sollen mehrere Zeichen in den Exponent, \emph{müssen} Sie mit Blockklammern arbeiten.
+\begin{verbatim}
+e^-itx
+\end{verbatim}
+ergibt
+\begin{equation}
+e^-itx
+\end{equation}
+während
+\begin{verbatim}
+e^{-itx}
+\end{verbatim}
+zu 
+\begin{equation}
+e^{-itx}
+\end{equation}
+wird. Das selbe gilt für tiefgestellte Indizes. Diese werden mit dem \_-Zeichen erzeugt:
+\begin{verbatim}
+A_{i,j}
+\end{verbatim}
+ergibt
+\begin{equation}
+A_{i,j}
+\end{equation}
+während 
+\begin{verbatim}
+A_i,j
+\end{verbatim}
+zu
+\begin{equation}
+A_i,j
+\end{equation}
+
+
+
+\section{Matrizen}
+
+
+\section{Mehrzeilige Formeln}
+
+
+
+
+

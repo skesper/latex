@@ -1,0 +1,362 @@
+
+\chapter{Dokumente und Klassen}\label{chap:doc}
+
+Wie bereits gesagt besitzen \LaTeX\ Dokumente immer eine Dokument-Klasse. Diese bestimmt in erster Linie das Aussehen des finalen Dokuments. Wie die Menge an Packages vermuten lässt, gibt es auch eine recht unübersichtliche Anzahl von Dokument-Klassen. Wir werden uns um zwei \LaTeX\ Hauptklassen kümmern, zum einen die \texttt{article}-Klasse sowie die \texttt{book}-Klasse.
+
+Später werden wir noch die \texttt{amsbook}-Klasse und \texttt{tufte}-Klassen kennen lernen. Die KOMA-Skript Klassen hätten sicher einen Platz hier verdient, jedoch ist ihre Funktionalität so umfangreich, dass wir an dieser Stelle nur auf ihre Dokumentation verweisen können mit dem Hinweis, dass es sich lohnt damit auseinander zu setzen.
+\begin{verbatim}
+http://www.komascript.de/
+\end{verbatim}
+Für den Anfang -- zum Beispiel im Kontext einer Diplom-, Master-Arbeit oder einer Dissertation -- werden wir uns hier auf die Grundlagen beschränken.
+
+Ein \LaTeX\ Dokument hat folgende Struktur: 
+\begin{verbatim}
+\documentclass{...}
+% Präambel
+\begin{document}
+% Inhalt...
+\end{document}
+\end{verbatim}
+Der erste Befehl muss immer die Angabe der Dokumentklasse sein. Der Bereich zwischen Dokumentklasse und dem Befehl
+\begin{verbatim}
+\begin{document}
+\end{verbatim}
+wird \textbf{Präambel} genannt. Dort werden alle Einstellungen untergebracht. Alles, was dort steht, hat nur indirekt Einfluss auf das Dokument. Es darf dort kein Text stehen!
+
+
+
+\section{Sprache}
+
+Ein \LaTeX\ Dokument besitzt eine Spracheinstellung, welche auf "`english"' voreingestellt ist. Sie bestimmt in erster Linie, welche Silbentrennung verwendet wird. Im Falle einer \texttt{book}-Klasse gibt es aber auch noch automatische Texte, wie zum Beispiel die Überschriften der Inhalts-, Abbildungs- und Tabellenverzeichnisse, des Weiteren erscheint über jedem Kapitel neben der vorgegebenen Überschrift auch noch das Wort "`Kapitel"' mit Nummer. Diese Texte können für die entsprechenden Sprachen von der Dokumentklasse automatisch angepasst werden. 
+
+Zur Definition von Deutsch als Dokumentsprache, muss in der Präambel die folgende Einstellung gemacht werden:
+\begin{verbatim}
+\usepackage[ngerman]{babel}
+\end{verbatim}
+Das \texttt{babel}-Paket wird daraufhin Deutsch als Sprache angeben, sodass alle Silbentrennungen nach den deutschen Regeln geschehen. Zusätzlich wird die \texttt{book}-Klasse die automatischen Texte auf deutsch umstellen. Der Parameter \texttt{ngerman} bezeichnet die Silbentrennung nach der neuen Rechtschreibung\footnote{Rechtschreibreform von 1996}, während der (ebenfalls noch anwählbare) \texttt{german} Parameter die alte Rechtschreibung verwenden würde. 
+
+Weitere Auswirkungen hat die Spracheinstellung nicht (im Besonderen keine Rechtschreibprüfung -- dies realisiert der Editor). Zu beachten ist, dass eine Umstellung der Sprache nicht bedeutet, dass auch im Eingabetext Umlaute usw. verwendet werden können. Hierfür ist das im Folgenden beschriebene Input Encoding verantwortlich.
+
+\subsection{Input-Encoding}
+
+Früher war es nicht möglich, in \TeX\ Umlaute zu verwenden. Damals musste man z.B. ein ü als \texttt{$\backslash$"\,u} eingeben. Was zu der ohnehin schon umständlichen Eingabemethode hinzukam. Extrem erleichtert wurde die Situation dadurch, dass man irgendwann ein "`Input-Encoding"' einführte. Dieses bestimmt -- salopp gesprochen -- ein Encoding derjenigen Zeichen, die der Anwender auf seiner Tastatur tippt. 
+
+Für deutsche Texte würde es ausreichen, ein einfaches Encoding wie ISO-8859-15 (inkl. Euro Zeichen) oder windows-1252 zu verwenden. Ich persönlich lasse mir aber gerne alle Freiheiten offen, sodass ich das UTF-8 Encoding bevorzuge. Das hat allerdings zur Folge, dass man beim Erzeugen von Dokumenten (\LaTeX-Dateien) unter Umständen nicht einfach irgendeinen Editor verwenden kann, sondern einen, der immer UTF-8 Dokumente erzeugt. Ein \LaTeX-Editor wird dies immer tun. Aber zum Beispiel das Windows Notepad nur auf Anforderung. Verwendet man das Notepad, so muss man beim Speichern einer Datei angeben, dass "`UTF-8"' als Encoding verwendet wird. Es ist also möglich, aber man muss explizit daran denken.
+
+Ist das Input-Encoding auf ein bestimmtes Encoding eingestellt, werden Dateien, die ein anderes Encoding haben entweder seltsame Zeichen produzieren, oder gar nicht lesbar sein. 
+
+Das Input-Encoding wird über den folgenden Befehl auf UTF-8 umgestellt:
+\begin{verbatim}
+\usepackage[utf8]{inputenc}
+\end{verbatim}
+
+\subsection{Font-Encoding}
+
+Das sogenannte Font-Encoding ist das dritte Standbein der Spracheinstellungen. Es würde an dieser Stelle etwas zu weit führen, es in aller Tiefe zu diskutieren. Als kurzer Überblick sei erwähnt, dass das \TeX\ am Anfang nur auf die englische Sprache abzielte und daher einen relativ beschränkten Satz an Sonderzeichen (im normalen Text, dies betrifft nicht den Formelsatz) unterstützte. 
+
+Als \TeX\ zunehmend internationalisierter wurde, war der Druck Sonderzeichen einzuführen immer größer. Aus den ursprünglich zur Verfügung stehenden 128 Glyphen Sätzen wurden 256 Glyphen Sätze. Die 128 Gylphen Sätze wurden mit einem "`O"' bezeichnet, für "`Original"' oder halt eben "`old"'. Tabelle \ref{tab:encodings} zeigt eine Übersicht über die wichtigsten (nicht alle) Font-Encodings. Für deutsche Texte ist eigentlich nur T1 relevant und von den O... Encodings sollte man die Finger lassen.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{r|c|l}
+\hline
+\textbf{Name} & \textbf{Glyphen} & \textbf{Beschreibung} \\
+\hline
+OT1 & 128 & Font Encoding von D. E. Knuth \\
+OT2 & 128 & kyrillisches Font Encoding \\
+OT3 & 128 & Font Encoding für phonetische Anwendungen \\
+OT4 & 128 & Font Encoding für polnische Sonderzeichen \\
+OT6 & 128 & Font Encoding für Armenische Sprache \\
+T1 & 256 & Font Encoding für europäische Sprachen \\
+T2A, T2B, T2C & 256 & Font Encodings für kyrillische Sprachen \\
+T3 & 256 & Font Encoding für phonetische Anwendungen \\
+T4 & 256 & Font Encoding für afrikanische Sprachen \\
+T5 & 256 & Font Encoding für Vietnamesisch \\
+\hline
+\end{tabular}\\[3mm]
+\caption{Übersicht Font Encodings} \label{tab:encodings}
+\end{table}
+
+
+\subsection{Zusammenfassung}
+
+Für eine Arbeit in deutscher Sprache, unter Verwendung direkter Umlaute und einem korrekten Font-Encoding, sollten die Einstellungen wie folgt geschehen:
+\begin{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\end{verbatim}
+
+Solange man in deutsch arbeitet, können diese drei Angaben immer in der Präambel auftauchen, damit steht man auf der sicheren Seite. Zu beachten ist, dass man bei der Einstellung eines UTF-8 Input-Encodings sich auch eines UTF-8 fähigen Editors versichern muss. 
+
+\section{Struktur}
+
+\LaTeX\ Dokumente besitzen eine Struktur, die auf Teilen, Kapiteln und Unterabschnitten beruht. Tabelle \ref{tab:structure} stellt die Ordnungsebenen der jeweiligen Struktur-Elemente dar:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l}
+Ebene -1 & \texttt{$\backslash$part} & Teil \\
+Ebene 0 & \texttt{$\backslash$chapter} & Kapitel \\
+Ebene 1 & \texttt{$\backslash$section} & Abschnitt \\
+Ebene 2 & \texttt{$\backslash$subsection} & Unterabschnitt \\
+Ebene 3 & \texttt{$\backslash$subsubsection} & Unter-Unterabschnitt \\
+Ebene 4 & \texttt{$\backslash$paragraph} & Absatz \\
+Ebene 5 & \texttt{$\backslash$subparagraph} & Unter-Absatz \\
+\end{tabular}
+\caption{Struktur Elemente in \LaTeX}
+\label{tab:structure}
+\end{table}
+
+Die verschiedenen Dokument-Klassen unterstützen nicht alle Struktur-E\-le\-men\-te. Die \texttt{article}-Klasse beginnt erst ab Ebene 1. Das bedeutet, wenn Sie ein Dokument mit Klasse \texttt{article} erzeugen, führt die Verwendung der Befehle \texttt{$\backslash$part} und \texttt{$\backslash$chapter} zu Fehlern. Des Weiteren ist die Nummerierung von \texttt{section} einstellig (Beispiel: 1. Titel), während sie innerhalb von \texttt{book} Dokumenten zweistellig ist (Beispiel: 1.4 Titel) und ein umschließendes Kapitel bedingt. 
+
+Es gibt noch weitere Unterscheidungen, die wir in den folgenden Abschnitten erklären wollen.
+
+\section{Die Haupt-Klassen}
+
+Hier werde ich nur auf die \texttt{article}- und \texttt{book}-Klassen eingehen. Die restlichen Hauptklassen \texttt{report}, \texttt{letter} und \texttt{beamer} werden nur erwähnt.
+
+\subsection{\texttt{article}-Klasse}
+
+Ein Artikel ist -- im Gegensatz zu einem Buch -- ein Dokument mit einem relativ überschaubaren Umfang. Artikel sind eher Facharbeiten, Veröffentlichungen in einer Zeitschrift oder komprimierte Schriften zur Wissensvermittlung. 
+
+Ein wissenschaftlicher Artikel besteht aus einer Überschrift mit Autorenangaben, einem Abstract\footnote{Ein Abstract ist eine Zusammenfassung oder auch überblicksartige Darstellung des Inhalts des Dokuments. Es ist oft auf Englisch verfasst, auch wenn die Dokumentsprache eine andere ist. Der Abstract wird schmaler gesetzt als der eigentliche Text im Dokument sowie meist auch in einem kleineren Font.} und diversen Abschnitten, die ohne nennenswerte Abstände hintereinander im Dokument erscheinen. Ein Beispiel für einen Artikel können Sie in Abbildung \ref{fig:article} finden. 
+
+\begin{figure}[p]
+\centering
+\frame{\includegraphics[width=\textwidth]{bsp/article.pdf}}
+\caption{Beispiel eines Artikels}
+\label{fig:article}
+\end{figure}
+
+Titel und Autor werden über die Makros \texttt{title} und \texttt{author} gesetzt. Der Befehl \texttt{maketitle} fügt diese dann zusammen zu einem Artikel-Kopf, bestehend aus Titel, Autor und dem Datum. Wenn man das Datum selbst bestimmen möchte, kann man dies über das Makro \texttt{date} setzen. 
+\begin{verbatim}
+\date{2. Januar 1877}
+\end{verbatim}
+Per Default wird immer der aktuelle Tag als Datum gesetzt. Möchte man selbst den heutigen Tag im Text verwenden, kann man dies mit dem \texttt{today} Makro. Der \LaTeX\ Code für diesen Artikel sieht folgendermaßen aus:
+\footnotesize
+\begin{verbatim}
+\documentclass[]{article}
+
+\title{Ein wissenschaftlicher Artikel}
+\author{Stephan Kesper}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Lorem ipsum dol...
+\end{abstract}
+
+\section{Der erste Abschnitt}
+Lorem ipsum dolor sit amet, ...
+
+\section{Der zweite Abschnitt}
+Lorem ipsum dolor ...
+
+\end{document}
+\end{verbatim}
+\normalsize
+
+In Artikeln ist es unüblich ein Inhaltsverzeichnis zu verwenden. Nichts-des\-to-trotz kann man es erzeugen, indem man an der Stelle, wo es dargestellt werden soll den Befehl
+\begin{verbatim}
+\tableofcontents
+\end{verbatim}
+angibt. Zum Inhaltsverzeichnis ist noch einiges zu sagen, was ich in Abschnitt \ref{chap:content} tun werde.
+
+
+\subsection{\texttt{book}-Klasse}
+
+Wenn man vor hat, einen längeren Text zu schreiben, gegebenenfalls mehrere hundert Seiten lang, so sollte man überlegen, eine Buch Klasse zu verwenden. Die einfachste unter diesen ist die \texttt{book}-Klasse.
+
+In Büchern kann man die \texttt{part} und \texttt{chapter} Struktur-Befehle verwenden. Ein Part ist ein "`Teil"' eines Buches. Wenn Sie nicht wissen, ob und wo Sie Teile verwenden sollten, tun Sie es lieber nicht. Sollten Sie zwei Bücher zu einem machen, können (vielleicht sogar sollten) Sie Teile verwenden. 
+
+Die Unterteilung von Büchern in "`Parts"' geschieht meistens dann, wenn das Buch verschiedene Themenbereiche abdeckt, die einer Trennung bedürfen. Kapitel strukturieren Inhalte, aber trennen sie nicht. Letztlich bestimmt der Autor, ob er eine Einteilung seines Buches haben möchte. Trotzdem sollte er mit der Einteilung in "`Parts"' eher sparsam umgehen.
+
+Die \texttt{book}-Klasse bietet nicht nur Inhalts-, sondern auch Tabellen- und Abbildungsverzeichnisse. Und die Kapitel beginnen -- sofern der Autor das nicht verändert -- auf der nächsten ungeraden Seite. Gegebenenfalls liegt zwischen dem letzten Text und dem neuen Kapitel eine gerade Seite, die einfach leer gelassen wird. Sections und Sub-Sections sind ähnlich wie in der \texttt{article}-Klasse zu verwenden, lediglich steht bei ihrer Nummerierung die Kapitelnummer davor. 
+
+Man muss beachten, dass die \texttt{book}-Klasse grundsätzlich davon ausgeht, dass der Text irgendwann beidseitig gedruckt wird. Beginnend mit der ersten Seite mit Seitenzahl "`1"'.
+
+\subsubsection{Haupt- und Nebenbereiche}
+
+Die \texttt{book}-Klasse hat zusätzlich zur Struktur-Einteilung noch eine Einteilung in front-, main- und backmatter Bereiche. Diese Bereiche trennen zum Beispiel die Inhalts- und Abbildungsverzeichnisse von den Hauptteilen, sowie auch von den Anhängen, Literaturverzeichnis und Index. Ein Beispiel:
+
+\footnotesize
+\begin{verbatim}
+\documentclass{book}
+
+\author{Stephan Kesper}
+\title{Ein Beispiel Buch}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+\tableofcontents
+
+\mainmatter
+\chapter{Erstes Kapitel}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr...
+
+\backmatter
+\end{document}
+\end{verbatim}
+\normalsize
+ergibt sechs Seiten:
+\begin{description}
+\item[i] Die Titelseite
+\item[ii] Leere gerade Seite
+\item[iii] Inhaltsverzeichnis
+\item[iv] Leere gerade Seite
+\item[1] Erste Inhaltsseite
+\item[2] Zweite Inhaltsseite
+\end{description}
+
+\includepdf[frame,nup=2x2,pages={-}]{bsp/book.pdf}
+
+Besondere Beachtung findet hierbei, dass der Hauptteil (mainmatter) eine eigene Nummerierung besitzt. Die Seiten des Anfangsteils (frontmatter) zählen hierbei nicht. Die frontmatter Nummerierung ist ohnehin mit römischen Zahlen realisiert, damit der Leser diese nicht mit der Nummerierung des Hauptteils verwechselt. 
+
+Das führt dazu, dass das erste Kapitel immer auf Seite 1 beginnt. Und dies auch so im Inhaltsverzeichnis dargestellt wird, auch wenn mit Inhalts-, Ab\-bil\-dungs- und Tabellenverzeichnis noch einiges an Seiten vor dem ersten Kapitel liegt. 
+
+\begin{fancyquotes}
+Die front-, main- und backmatter Befehle funktionieren nicht in der Artikel Klasse! Das ist einer der großen Unterschiede zwischen den \texttt{book}- und \texttt{article}-Klassen. Falls Sie wert auf eine konsistente Nummerierung Ihrer Bereiche legen, sollten Sie auf jeden Fall eine \texttt{book}-Klasse verwenden.
+\end{fancyquotes}
+
+\ding{229} Die Universität Koblenz bietet Dokument-Klassen für Diplom- und Magisterarbeiten zum Download an, die auf der Article Klasse basieren. Das bedeutet, dass die front- und backmatter Bereiche nicht verwendet werden können und so das Inhaltsverzeichnis (und ggf. weitere) in die Seitennummerierung des Dokuments mitaufgenommen wird. Des Weiteren wird mit zwei Zählern gearbeitet und so im vorderen Bereich auf römische Nummerierung geschaltet, während der Rest des Dokuments eine arabische Nummerierung erhält.
+
+Üblicherweise sind Inhalts-, Abbildungs- und Tabellenverzeichnisse nicht im Inhaltsverzeichnis zu finden. Die im späteren noch beschriebene \texttt{momoir}-Klasse nimmt diese aber auf. 
+
+\subsection{\texttt{report}-Klasse}
+
+Ein Report ist -- wie ein Artikel -- eher für kürzere Texte gedacht. Er hat ein \texttt{abstract}-Environment, kann allerdings Kapitel enthalten, was der Hauptunterschied zum Artikel ist. Abstract wird auf einer eigenen Seite angezeigt. Die Kapitel beginnen auf einer neuen Seite, aber nicht notwendigerweise auf einer ungeraden Seite. 
+
+
+\subsection{\texttt{letter}-Klasse}
+
+Wie der Name schon sagt, formatiert diese Klasse \LaTeX\ in einer Brief Form. Persönlich bin ich der Meinung, dass die meisten Brief Klassen von \LaTeX\ entweder so einfach sind, dass sich der Aufwand mit \LaTeX\ nicht lohnt, oder so seltsam aussehen, dass man sie nicht verwenden möchte.
+
+\subsection{\texttt{beamer}-Klasse}
+
+Für Präsentationen dient die \texttt{beamer}-Klasse. Speziell für wissenschaftliche Präsentationen kann es nützlich sein, \LaTeX\ zu verwenden, da natürlich der gesamte Umfang des mathematischen Formelsatzes zur Verfügung steht. Das erzeugte PDF kann mit einem PDF Betrachter im Vollbildmodus genau wie eine Powerpoint Präsentation genutzt werden. 
+
+
+\section{Inhaltsverzeichnis}\label{chap:content}
+
+Das Inhaltsverzeichnis wird von \LaTeX\ automatisch erzeugt, wenn der Befehl 
+\begin{verbatim}
+\tableofcontents
+\end{verbatim}
+gefunden wurde. Das Inhaltsverzeichnis ist eine \LaTeX\ Datei, die den Namen Ihrer Datei hat aber die Endung "`.toc"'\footnote{toc = table of content} besitzt. Diese toc-Datei wird genau an der Stelle in Ihr Dokument eingefügt, wo der \texttt{tableofcontents} Befehl steht. Sehen wir uns einen (für mich) aktuellen Teil des Inhaltsverzeichnis dieses Buches an:
+
+\footnotesize
+\begin{verbatim}
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Grundlagen}{1}
+\contentsline {section}{\numberline {1.1}Was ist \textlatin {\LaTeX }?}{1}
+\contentsline {section}{\numberline {1.2}Wo beginnen wir?}{2}
+\contentsline {subsection}{\numberline {1.2.1}Das minimale Dokument}{2}
+...
+\end{verbatim}
+\normalsize
+
+\LaTeX\ schreibt, während der Abarbeitung des Dokuments, einfach die Überschriften der Kapitel, Sections und Subsections in eine Datei. Und zwar mit den zu diesem Zeitpunkt gültigen Seitenzahlen und setzt den Befehl \texttt{contentsline} davor. Das ist -- wie Sie sich vorstellen können -- ein relativ naives Vorgehen. Stellen wir uns vor, wir hätten bereits ein längeres Dokument geschrieben und entschließen uns dann erst ein Inhaltsverzeichnis anzulegen. Wir setzen den Table of Contents Befehl an den Anfang des Codes und sehen uns an, was dabei heraus kommt. Im ersten Durchlauf gar nichts. Denn die toc-Datei war gar nicht existent. Das bedeutet, nach der ersten Ausführung besitzt Ihr Dokument kein Inhaltsverzeichnis, jedoch ist die toc-Datei nun gefüllt. Starten wir einen erneuten Durchlauf, so erscheint ein Inhaltsverzeichnis mit der zu diesem Zeitpunkt existenten toc-Datei. Das ist allerdings die toc-Datei aus dem vorherigen Lauf, weil das Inhaltsverzeichnis  \textbf{VOR} den Kapitel und Section Angaben steht (wie das für Inhaltsverzeichnisse üblicherweise der Fall ist). Deshalb stehen da noch die Seitenzahlen aus dem vorherigen Lauf. Daraus folgt, dass im zweiten Lauf zwar das Inhaltsverzeichnis vorhanden ist, aber die Seitenzahlen noch nicht stimmen. Erst mit dem dritten Lauf hat das Inhaltsverzeichnis die korrekten Seitenzahlen, weil sich das Inhaltsverzeichnis auf seine volle Länge erweitert hat und sämtliche nachfolgenden Seiten entsprechend weiter gerückt hat.
+
+Ich kann es nur noch einmal sagen: Diese Vorgehensweise ist naiv. Heute würde man erwarten, dass das Programm die Seitenzahlen im ersten Lauf in korrekter Weise darstellen kann. Doch das ist kein triviales Problem, denn die Länge des Inhaltsverzeichnis hat Einfluss auf die Position der Kapitel- und Abschnittsüberschriften. Aber ich sage nicht, dass es unlösbar ist! 
+
+Man kann nur mutmaßen, warum Prof. Knuth sich nicht die Mühe machte, eine sofortige Berechnung der Seitenzahlen zu implementieren. Auf der anderen Seite kann argumentiert werden, dass die mehrfache Ausführung des \LaTeX-Compilers (besonders bei heutigen Computern) so wenig Zeit einnimmt, dass es keine Rolle spielt. Man muss es nur Bedenken.
+
+Die Art, wie das Inhaltsverzeichnis in \LaTeX\ aufgebaut wird, ist symptomatisch für alle anderen Systeme. Der Index, Tabellen- und Abbildungsverzeichnisse werden in der selben Art erzeugt. Beim Index kommt sogar noch hinzu, dass man das Tool \texttt{makeindex} zwischen dem ersten und zweiten \LaTeX\ Aufruf starten muss. Doch dazu später mehr. 
+
+
+\section{Environments}
+
+In \LaTeX\ wird der Satz von Text und Formeln von sogenannten "`Environments"' (engl. für Umgebung) bestimmt. Eines der wichtigsten Environments ist das für den Formelsatz. Aufgrund der Wichtigkeit hat es ein eigenes Kapitel bekommen, nämlich Kapitel \ref{chap:formel}.
+
+Environments sind örtlich (im Sinne einer Textstelle) begrenzt von den Befehlen 
+\begin{verbatim}
+\begin{name}
+...
+\end{name}
+\end{verbatim}
+wobei \texttt{name} ein Platzhalter ist für den Namen des entsprechenden Environments. Wir werden viele Environments kennenlernen, die für die verschiedenen Formatierungen verwendet werden. Dabei wird immer nur der Name des Environments erwähnt und dabei implizit vorausgesetzt, dass Sie dieses Environment mit den begin- und end-Befehlen starten und enden lassen. Hier einige Beispiele für Environments:
+
+\subsection{\texttt{quote} -- Zitate}
+
+Längere Zitate sollten immer in einer Weise vom Fließtext unterschieden werden, damit nicht ausversehen dem Autor der Text zugeschrieben wird. Hierfür gibt es das \texttt{quote}-Environment.
+
+\begin{quote}
+Mag das Geld auch den Charakter des bloß Nützlichen haben, so hat es dennoch eine gewisse Ähnlichkeit mit dem Glück, weil es auch den Charakter des Allumfassenden besitzt, da ja dem Gelde alles untertan ist.
+\begin{flushright}
+\textsl{Thomas von Aquin (1225-1274)}
+\end{flushright}
+\end{quote}
+Dieses Zitat würde in folgender Weise geschrieben werden:
+\begin{verbatim}
+\begin{quote}
+Mag das Geld auch den Charakter des bloß Nützlichen haben, so 
+hat es dennoch eine gewisse Ähnlichkeit mit dem Glück, weil es 
+auch den Charakter des Allumfassenden besitzt, da ja dem Gelde 
+alles untertan ist.
+\begin{flushright}
+\textsl{Thomas von Aquin (1225-1274)}
+\end{flushright}
+\end{quote}
+\end{verbatim}
+Man beachte, dass gleich zwei Environments verwendet wurden, das \texttt{quote}- und das \texttt{flushright}-Environment. Letzteres setzt den Text rechtsbündig. Hätte man dieses nicht innerhalb des \texttt{quote}-Environments verwendet, wäre es bis zum eigentlichen Rand verschoben worden, wie im folgenden Beispiel:
+
+\begin{quote}
+Mag das Geld auch den Charakter des bloß Nützlichen haben, so 
+hat es dennoch eine gewisse Ähnlichkeit mit dem Glück, weil es 
+auch den Charakter des Allumfassenden besitzt, da ja dem Gelde 
+alles untertan ist.
+\end{quote}
+\begin{flushright}
+\textsl{Thomas von Aquin (1225-1274)}
+\end{flushright}
+Daraus folgt: Das äußere Environment bestimmt das innere! Das ist bei Schachtelungen zu beachten. In manchen Fällen widersprechen sich auch die Einstellungen der verschachtelten Environments, dies ist dann im Einzelnen zu analysieren.
+
+\subsection{Ausrichtungen}
+
+Die Ausrichtung des Textes sollte man meist \LaTeX\ und der verwendeten Dokumentklasse überlassen. Will man jedoch einen Text besonders hervorheben, kann man dies mit dem \texttt{center}-Environment für zentrierten Text:
+
+\begin{center}
+\textsc{Zentrierter Text}
+\end{center}
+
+\noindent Dem \texttt{flushleft}-Environment für linksorientierten Text (default):
+
+\begin{flushleft}
+\textsc{Links ausgerichteter Text}
+\end{flushleft}
+
+\noindent Und dem \texttt{flushright}-Environment für rechtsorientierten Text:
+
+\begin{flushright}
+\textsc{Rechts ausgerichteter Text}
+\end{flushright}
+
+\subsection{Abbildungen}
+
+Abbildungen, die auch im Abbildungsverzeichnis auftauchen sollen, formatiert man mit dem \texttt{figure}-Environment. Eine Abbildung wird mit diesem Environment an eine Stelle gesetzt, die dem Seitenbild nach gewissen Regeln "`förderlich"' ist. Da Sie nie genau wissen, wohin \LaTeX\ Ihre Abbildung verschiebt, ist es notwendig, diese nummerieren zu lassen (was automatisch geschieht) und diese Nummer im Text als Referenz zu verwenden. Die im Folgenden dargestellten Abbildungen haben keine Verweisangaben, da dies in Abschnitt \ref{sect:verweise} im Detail dargestellt wird. 
+
+\begin{figure}[h]
+\centering
+{\fontsize{48}{50} \staveXI}
+\caption{Eine Beispiel Abbildung.}
+\end{figure}
+
+\begin{verbatim}
+\begin{figure}[h]
+\centering
+{\fontsize{48}{50} \staveXI}
+\caption{Eine Beispiel Abbildung.}
+\end{figure}
+\end{verbatim}
+Die eckigen Klammern hinter dem \texttt{begin}-Befehl stellen Parameter zum gewählten Environment dar. Das \texttt{figure}-Environment bietet für den Parameter die Werte:
+\begin{description}
+\item[h] Für die Stelle, an der die Abbildung definiert wurde.
+\item[b] Für den unteren Rand (bottom) einer Seite. 
+\item[t] Für den oberen Rand (top) einer Seite.
+\item[p] Die Zeichnung soll auf einer eigenen Seite erscheinen.
+\end{description}
+Eine Abbildung benötigt immer eine gewisse Menge Platz. Sollte der Parameter \texttt{h} verwendet worden sein und an der Stelle, wo die Abbildung eingesetzt werden soll, nicht mehr genug Platz auf der Seite zur Verfügung stehen, wird sie trotz des \texttt{h} Parameters auf die nächste Seite verschoben und der Text, der eigentlich hinter der Abbildung auftauchen sollte, wird davor gesetzt.
