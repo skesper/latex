@@ -21,9 +21,53 @@ Der erste Befehl muss immer die Angabe der Dokumentklasse sein. Der Bereich zwis
 \begin{verbatim}
 \begin{document}
 \end{verbatim}
-wird \textbf{Präambel} genannt. Dort werden alle Einstellungen untergebracht. Alles, was dort steht, hat nur indirekt Einfluss auf das Dokument. Es darf dort kein Text stehen!
+wird \textbf{Präambel} genannt. Dort werden alle Einstellungen untergebracht. Alles, was dort steht, hat nur indirekt Einfluss auf das Dokument. Es darf dort kein Text stehen! 
 
+Zwischen \texttt{begin\{document\}} und \texttt{end\{document\}} steht der eigentliche Inhalt. Alles was dort steht, wird als Text interpretiert und in die Ausgabe des Dokuments mitaufgenommen. Lediglich die Befehle, die grundsätzlich mit einem Backslash $\backslash$ beginnen, wandelt \LaTeX\ nicht in Text um, sondern führt diese aus.
 
+Überblick über die Sonderzeichen, die in \LaTeX\ eine Bedeutung haben:
+
+\begin{description}
+\item[$\backslash$] Beginnt einen Befehl.
+\item[\$] Beginnt und beendet den inline Mathematikmodus. Dieser wird in Abschnitt \ref{sec:inline} näher beschrieben.
+\item[\%] Beginnt einen Kommentar. Alles, was in einer Zeile hinter einem \%-Zeichen folgt, wird als Kommentar interpretierung und von \LaTeX\ ignoriert.
+\item[\&] Ist ein sogenannter Tab-Character. In Tabellen oder Matrizen wird dieser verwendet. Die Nutzung wird in den Kapiteln \ref{chap:table} und \ref{chap:formel} erklärt.
+\end{description}
+
+Bis auf das Backslash selbst kann jedes dieser Zeichen "`Escaped"' werden, das bedeutet, man zeigt \LaTeX\ an, dass man das Zeichen selbst benutzen will und nicht an seine Bedeutung für \LaTeX\ interessiert ist. Dies macht man mit dem Backslash. Also schreibt man das solche Zeichen einfach als 
+\begin{verbatim}
+\% \& \$
+\end{verbatim}
+leider gilt das nicht für das Backslash selbst. Denn das Doppelbackslash hat wiederum eine eigene Bedeutung als Abkürzung für die Beendigung der aktuellen Zeile. Wenn man im Text also \\
+eine neue Zeile anfangen will, \\
+ohne einen neuen Absatz zu erzeugen, \\
+verwendet man das doppelte Backslash.
+
+\section{Absätze}
+
+\LaTeX\ interpretiert einen einzigen Newline-Character, wie er z.B. durch das Drücken der Return Taste erzeugt wird, nicht als ernsthaften Versuch einen Absatz zu beenden. Man muss eine echte Leerzeile erzeugen, damit ein Absatz erzeugt wird. Also
+\begin{verbatim}
+Erste Zeile,
+hier wird noch kein neuer Absatz erzeugt. ...
+
+Aber dafür hier.
+\end{verbatim}
+Wird von \LaTeX\ zu:
+
+\bigskip
+\small
+
+Erste Zeile,
+hier wird noch kein neuer Absatz erzeugt. Hier schreibe ich noch die Zeile voll, damit der erste Umbruch erreicht wird.
+
+Aber dafür hier.
+\normalfont
+
+Ein Absatz beginnt mit dem Einzug der ersten Zeile. Die Breite dieses Einzuges wird durch den Parameter
+\begin{verbatim}
+\parindent
+\end{verbatim}
+bestimmt.
 
 \section{Sprache}
 
