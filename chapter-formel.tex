@@ -3,7 +3,28 @@
 
 Eine der wichtigsten Anwendungen von \LaTeX\ ist der Formelsatz. Es ist zum quasi Standard geworden, sobald Formeln in einer Veröffentlichung auftauchen. Ich hoffe, in den vorherigen Kapiteln deutlich gemacht zu haben, dass es sich auch dann lohnt \LaTeX\ einzusetzen, wenn man keine Formeln verwendet. Aber sollte man es tun, führt praktisch kein Weg an \LaTeX\ vorbei.
 
-Mathematische Formeln werden in verschiedenen Situationen eingesetzt. Im Fließtext (inline) und zum anderen als zentrierte Formel in einem eigenen Absatz (Display-Style). Alles, was über den Formelsatz im Display-Style gesagt werden kann, trifft auch für den inline Satz zu. Allerdings werden die Formeln im inline Satz meist flacher dargestellt, was dazu führt, dass hoch- oder tiefgestellte Informationen gegebenenfalls an anderen Stellen auftauchen, doch dazu später mehr.
+Es hat sich als praktisch erwiesen, grundsätzlich die von der AMS\footnote{American Mathematical Society} definierten und in den \LaTeX-Distributionen in aller Regel vorhandenen Pakete zu verwenden. AMS hat folgende Pakete definiert und veröffentlicht:
+
+\begin{description}
+\item[\texttt{amsmath}] enthält eine Vielzahl von nützlichen Erweiterungen. Unter anderem Verbesserungen des \texttt{equation}-Environments, vereinfachte/verbesserte mehrzeilige Formeldartellung. \texttt{align}-Environments, sowie die \texttt{text}-Umgebung innerhalb des Formelsatzes und viele Symbole.
+\item[\texttt{amsfonts}] enthält Fraktur- und Skript-Zeichen, sowie die bekannten \texttt{mathbb}-Zeichen zur Darstellung grundlegender Mathematischer Mengen: $\mathbb{N}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ usw.
+\item[\texttt{amssymb}] enthält viele zusätzliche Symbole.
+
+\end{description}
+sowie noch weitere, auf die ich hier nicht weiter eingehen möchte.
+
+Die Nutzung dieser Bibliotheken hat sich so sehr eingebürgert, dass das TeXstudio einen eigenen Menüpunkt hat, um die folgenden Pakete dem Dokument hinzuzufügen. Klicken Sie hierfür auf "`Latex"' $\rightarrow$ "`AMS Pakete"'. Es werden dann die folgenden Befehle in Ihr Dokument eingefügt:
+
+\begin{verbatim}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\end{verbatim}
+Sie können diese natürlich auch manuell eintragen.
+
+\section{Display-Styles}
+
+Mathematische Formeln werden verschiedenen dargestellt, zum einen im normalen Text (inline) und zum anderen als zentrierte Formel in einem eigenen Absatz (Display-Style). Alles, was über den Formelsatz im Display-Style gesagt werden kann, trifft auch für den inline Satz zu. Allerdings werden die Formeln im inline Satz meist flacher dargestellt, was dazu führt, dass hoch- oder tiefgestellte Informationen gegebenenfalls an anderen Stellen auftauchen, doch dazu später mehr.
 
 Der Display-Style von Formeln stellt diese -- wie gesagt -- zentriert in einem eigenen Absatz dar:
 
@@ -44,7 +65,7 @@ geschrieben werden. Verwenden Sie nicht den von \TeX\ bekannten "`\$\$"' (doppel
 
 \section{Griechische Zeichen}
 
-Die in Tabelle \ref{tab:greek} dargestellten griechischen Zeichen stehen nur im Mathematik Modus zur Verfügung -- abgesehen natürlich von den Zeichen, die durch normale lateinische Zeichen dargestellt werden. Daher sind sie sinnvoll nur dann zu verwenden, wenn sie in Formeln vorkommen. 
+Die in Tabelle \ref{tab:greek} dargestellten griechischen Zeichen stehen nur im Mathematik Modus zur Verfügung -- abgesehen natürlich von den Zeichen, die durch normale lateinische Zeichen dargestellt werden. Daher sind sie nur dann sinnvoll zu verwenden, wenn sie in Formeln vorkommen. 
 
 Sollen Absätze oder ganze Texte in griechisch formatiert werden, müssen Pakete verwendet werden, bzw. falls der gesamte Text in griechisch gesetzt werden soll, reicht es das Font-Encoding anzupassen.
 
@@ -52,7 +73,7 @@ Sollen Absätze oder ganze Texte in griechisch formatiert werden, müssen Pakete
 \centering
 \begin{tabular}{c|l|c|l|l}
 \hline
-\textbf{Kleiner Buchstabe} & \textbf{\LaTeX-Code} & \textbf{Großbuchstabe} & \textbf{\LaTeX-Code} & \textbf{Bezeichnung} \\
+\textbf{Kleinbuchstaben} & \textbf{\LaTeX-Code} & \textbf{Großbuchstaben} & \textbf{\LaTeX-Code} & \textbf{Bezeichnung} \\
 \hline
 $\alpha $ & $\backslash$alpha & $A $ & A & Alpha \\
 $\beta $ & $\backslash$beta & $B $ & B & Beta \\
@@ -84,7 +105,7 @@ $\omega $ & $\backslash$omega & $\Omega $ & $\backslash$Omega & Omega \\
 \label{tab:greek}
 \end{table}
 
-\section{Exponenten und Indizes}
+\section{Hoch- und tiefgestellte Zeichen}
 
 Exponenten werden mit dem $\hat{ }$\ -Zeichen hochgestellt. Das "`hoch"'-Zeichen gilt immer nur für das darauf folgende Zeichen. Sollen mehrere Zeichen in den Exponent, \emph{müssen} Sie mit Blockklammern arbeiten.
 \begin{verbatim}
@@ -118,15 +139,392 @@ zu
 \begin{equation}
 A_i,j
 \end{equation}
+wird. Die Block-Klammern $\lbrace \rbrace$ sollten häufig verwendet werden, sie haben nur strukturellen Einfluss auf das Schriftbild, zusätzliche Klammern (auch wenn sie überflüssig sind), werden ignoriert. Daher ist es besser ggf. zu viele Klammern zu verwenden, als zu wenige.
 
+\section{Dots! More Dots!}
 
+Auslassungen, Reihen und Listen werden in der Mathematik oft mit Punkten verkürzt dargestellt. Hierfür gibt es mehrere Varianten, wie in Tabelle \ref{tab:dots} gezeigt:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l}
+\hline
+\textbf{Darstellung} & \textbf{\LaTeX-Code} & \textbf{Beschreibung} \\
+\hline
+$\dots$ & $\backslash$dots & Drei Punkte auf der Baseline \\
+$\cdots$ & $\backslash$cdots & Drei Punkte vertikal zentriert \\
+$\ddots$ & $\backslash$ddots & Diagonal (meist für Matrizen) \\
+$\vdots$ & $\backslash$vdots & Drei Punkte vertikal \\
+$ 0,1, \dots , n$ & $\backslash$dotsc & Punkte in einer Kommaliste \\
+$A_1+\dotsb+A_N$ & $\backslash$dotsb & Punkte für binäre Operatoren \\
+$A_1 \dotsm A_N$ & $\backslash$dotsm & Punkte für Multiplikationen \\
+$\int_a^b \dotsi$ & $\backslash$dotsi & Punkte für Integrale \\
+$A_1\dotso A_N$ & $\backslash$dotso & "`andere"' Punkte -- keine der obigen \\
+\hline
+\end{tabular}
+\caption{Punkte im Mathematik Modus}
+\label{tab:dots}
+\end{table}
+
+Die Unterschiede im Schriftbild zwischen den verschiedenen Varianten sind oft kaum zu sehen, das kann aber am verwendeten Font liegen. Wählt man einen anderen, können die Unterschiede wiederum markant sein. Daher ist es sinnvoll, die entsprechenden Punkte Makros ihrer Bestimmung nach zu verwenden. Auch wenn der Unterschied im ersten Augenblick nicht ersichtlich ist. 
+
+\section{Klammern}
+
+\subsection{\texttt{left} und \texttt{right}}
+
+Hat man Operatoren oder größere Formelteile, so ragen diese meist über umgebende Klammern heraus, wie z.B.
+\begin{equation}\label{eq:int}
+( \int_{a}^{b} \vert f(x)\vert  dx )^2
+\end{equation}
+Hier wurden einfache Klammern verwendet:
+\begin{verbatim}
+( \int_{a}^{b} \vert f(x)\vert  dx )^2
+\end{verbatim}
+Statt dessen sollte man in solchen Momenten immer die \texttt{left}- und \texttt{right}-Befehle einsetzen, die Klammern anhand der beinhalteten Formel vergrößern:
+
+\begin{verbatim}
+\left( \int_{a}^{b} \vert f(x)\vert  dx \right)^2
+\end{verbatim}
+ergibt
+\begin{equation*}
+\left( \int_{a}^{b} \vert f(x)\vert  dx \right)^2
+\end{equation*}
+Das funktioniert auch mit eckigen Klammern
+\begin{verbatim}
+\left[ \int_{a}^{b} \vert f(x)\vert  dx \right]^2
+\end{verbatim}
+\begin{equation*}
+\left[ \int_{a}^{b} \vert f(x)\vert  dx \right]^2
+\end{equation*}
+oder geschweiften Klammern
+\begin{verbatim}
+\left\{ \int_{a}^{b} \vert f(x)\vert  dx \right\}^2
+\end{verbatim}
+\begin{equation*}
+\left\{ \int_{a}^{b} \vert f(x)\vert  dx \right\}^2
+\end{equation*}
+
+Zu den \texttt{left}- und \texttt{right}-Befehlen passend, gibt es noch einen \texttt{middle}-Befehl. Dieser kann verwendet werden, um zwischen den linken und rechten Klammern gleich groß formatierte Zeichen zu erzeugen.
+
+\begin{equation}\label{eq:s1}
+S_n = \left\{ x \middle| x\in \mathbb{R}^n, \vert x\vert = 1 \right\}
+\end{equation}
+wird mit 
+\begin{verbatim}
+S_n = \left\{ x \middle| x\in \mathbb{R}^n, \vert x\vert = 1 \right\}
+\end{verbatim}
+erzeugt. Während 
+\begin{equation}\label{eq:s2}
+S_n = \{ x | x\in \mathbb{R}^n, \vert x\vert = 1 \}
+\end{equation}
+mit
+\begin{verbatim}
+S_n = \{ x | x\in \mathbb{R}^n, \vert x\vert = 1 \}
+\end{verbatim}
+eine andere Formatierung aufweist, auch wenn die Unterschiede in diesem Fall subtiler und nicht so stark ausfallen, wie in Gleichung \ref{eq:int}. Wie das letzte Beispiel zeigt, hängt die unterschiedliche Darstellung unter anderem auch von der Verwendung des Mathematik Fonts ab. In diesem Dokument verwenden wir den \texttt{fourier} Mathematik Font. Im Standard Computer Modern Font, ist ein Unterschied in den Klammern aus den Gleichungen (\ref{eq:s1}) und (\ref{eq:s2}) kaum auszumachen. 
+
+\subsection{Manuelle Klammergrößen}
+
+Falls eine automatische Größenanpassung nicht das gewünschte Ergebnis liefert, oder -- wie im Fall der \texttt{left}- und \texttt{right}-Befehle -- geschachtelte Klammern nicht zu einer Anpassung der Klammergrößen führen, kann man manuell eingreifen. Die Befehle 
+\begin{verbatim}
+\Bigg( \bigg( \Big( \big( ( \dots ) \big) \Big) \bigg) \Bigg)
+\end{verbatim}
+erzeugen eine Klammerkaskade der folgenden Art:
+\begin{equation*}
+\Bigg( \bigg( \Big( \big( ( \dots ) \big) \Big) \bigg) \Bigg)
+\end{equation*}
+Hierbei ist zu beachten, dass im \texttt{fourier}-Mathematik Font (der für dieses Dokument verwendet wurde) die Klammern \texttt{bigg} und \texttt{Big} fälschlicherweise die gleiche Größe haben. Im standard Computer Modern sowie im \texttt{cmbright} aber nicht. 
 
 \section{Matrizen}
+
+Matrizen -- und auch Vektoren, die einspaltige Matrizen sind -- werden mit der Familie der  \texttt{$\backslash$matrix} Environments formatiert. Diese stehen nur im Mathematik-Modus zur Verfügung:
+
+Eine einfache Matrix, bei der man selbst die Klammerdarstellung bestimmen möchte, wird mit dem \texttt{matrix}-Environment formatiert:
+
+\begin{equation*}
+\begin{matrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \\
+a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{matrix}
+\end{equation*}
+
+Die Deklaration der Spalten und Zeilen entspricht hierbei genau derjenigen von Tabellen. Man kann sagen, dass eine Matrix in \LaTeX\ eigentlich eine Art Tabelle ist. Der Code für die zuvor dargestellte Matrix ist:
+
+\begin{verbatim}
+\begin{matrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \\
+a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{matrix}
+\end{verbatim}
+
+Die \& Zeichen trennen dabei die Spalten und die $\backslash\backslash$ trennen die Zeilen. Mit den Befehlen  \texttt{left(} und \texttt{right)} wird daraus eine vollständige Matrix:
+
+\begin{equation*}
+\left(\begin{matrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \\
+a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{matrix}\right)
+\end{equation*}
+
+\begin{verbatim}
+\left(\begin{matrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+...
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{matrix}\right)
+\end{verbatim}
+
+\subsection{\texttt{pmatrix}}
+Eine Matrix wie oben mit runden Klammern kann auch ohne die \texttt{left}- und \texttt{right}-Befehle erzeugt werden. Hierfür steht das \texttt{pmatrix}-Environment zur Verfügung.
+\begin{equation*}
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \\
+a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{pmatrix}
+\end{equation*}
+\begin{verbatim}
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+...
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{pmatrix}
+\end{verbatim}
+
+\subsection{\texttt{bmatrix}}
+
+\begin{equation*}
+\begin{bmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \\
+a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{bmatrix}
+\end{equation*}
+\begin{verbatim}
+\begin{bmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+...
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{bmatrix}
+\end{verbatim}
+
+\subsection{\texttt{Bmatrix}}
+
+\begin{equation*}
+\begin{Bmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \\
+a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{Bmatrix}
+\end{equation*}
+\begin{verbatim}
+\begin{Bmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+...
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{Bmatrix}
+\end{verbatim}
+
+\subsection{\texttt{vmatrix}}
+
+\begin{equation*}
+\begin{vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \\
+a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{vmatrix}
+\end{equation*}
+\begin{verbatim}
+\begin{vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+...
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{vmatrix}
+\end{verbatim}
+
+\subsection{\texttt{Vmatrix}}
+
+\begin{equation*}
+\begin{Vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \\
+a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{Vmatrix}
+\end{equation*}
+\begin{verbatim}
+\begin{Vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
+...
+a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
+\end{Vmatrix}
+\end{verbatim}
+
+\subsection{\texttt{bordermatrix}}
+
+Eine "`Bordermatrix"' wird verwendet, um Zeilen und Spalten mit Annotationen zu versehen. Im Gegensatz zu den vorherigen Befehlen, wird eine Bordermatrix nicht als Environment zur Verfügung gestellt, sondern muss mit dem Befehl \texttt{bordermatrix} eingeleitet werden.
+
+\begin{equation*}
+\bordermatrix{
+ & 1 & 2 & 3 & \dots & n \cr
+A & a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \cr
+B & a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \cr
+C & a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \cr
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \cr
+N & a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \cr
+}
+\end{equation*}
+
+Hervorzuheben ist auch die Tatsache, dass die übliche Zeilenbeendigung mit doppeltem Slash Zeichen nicht funktioniert. Es muss der \texttt{cr}-Befehl (Carriage Return) verwendet werden.
+
+\begin{verbatim}
+\bordermatrix{
+ & 1 & 2 & 3 & \dots & n \cr
+A & a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \cr
+B & a_{2,1} & a_{2,2} & a_{2,3} & \dots & a_{2,n} \cr
+C & a_{3,1} & a_{3,2} & a_{3,3} & \dots & a_{3,n} \cr
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \cr
+N & a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \cr
+}
+\end{verbatim}
+
 
 
 \section{Mehrzeilige Formeln}
 
+Es gibt mehrere Gründe für den Einsatz von mehrzeiligen Formeln. Zum einen längere Umformungen, ansich lange Formeln oder auch die Darstellung von mehreren Formeln in einer Übersicht. Hierfür gibt es verschiedene Environments.
 
+Es muss hier ausdrücklich darauf hingewiesen werden, dass der Formel-Satz in \LaTeX\ niemals umbricht. Egal, wie lang die Formel ist, sie reicht gegebenenfalls einfach über den physikalischen Seiten-Rand hinaus. Das bedeutet, dass Sie sich als Autor Gedanken darüber machen müssen, an welcher Stelle und wie Ihre Formel umzubrechen ist. 
 
+\subsection{Der Standard}
 
+Im \LaTeX\-Standard gibt es das \texttt{eqnarray}-Environment. Dieses erlaubt es Gleichungen in einer Art Tabelle darzustellen:
+
+\begin{verbatim}
+\begin{eqnarray}
+f(x) &=& (x-1)\cdot (x-2) \\
+&=& x^2-3x+2
+\end{eqnarray}
+\end{verbatim}
+ergibt
+\begin{eqnarray}
+f(x) &=& (x-1)\cdot (x-2) \\
+&=& x^2-3x+2
+\end{eqnarray}
+Wie man sieht, wird jede der Zeilen einzeln nummeriert. Dies kann wiederum mit dem \texttt{*} verhindert werden, also wenn das \texttt{eqnarray*}-Environment verwendet wird:
+\begin{eqnarray*}
+f(x) &=& (x-1)\cdot (x-2) \\
+&=& x^2-3x+2
+\end{eqnarray*}
+
+\subsection{Weitere Umgebungen der AMS}
+
+\subsubsection{Split}
+
+Die AMS hat das \texttt{split}-Environment hinzugefügt, mit dem das \texttt{equation}-Environment zu einem mehrzeiligen Environment gemacht werden kann.
+
+\begin{equation}
+\begin{split}
+f(x) &= (x-1)\cdot (x-2) \\
+&= x^2-3x+2
+\end{split}
+\end{equation}
+Es hat den Vorteil, dass das \texttt{equation}-Environment nur eine Nummer vergibt. Und die Abstände zwischen Gleichheitszeichen und Formel sind kleiner. Der Code sieht folgendermaßen aus:
+\begin{verbatim}
+\begin{equation}
+\begin{split}
+f(x) &= (x-1)\cdot (x-2) \\
+&= x^2-3x+2
+\end{split}
+\end{equation}
+\end{verbatim}
+Man beachte, dass das Gleichheitszeichen nicht von zwei \&-Zeichen umgeben ist.
+
+\subsubsection{Multiline}
+
+Eine sehr lange Formel, die umgebrochen werden muss, kann mit Hilfe des \texttt{multline}-Environments dargestellt werden.
+
+\begin{multline}\label{eq:chi}
+\chi_{\bar{A}\otimes F}(\exp(\zeta_i g^i))  = \chi_{\bar{A}\otimes F}\left( \exp(\zeta_i \bar{g}^i) \exp(\frac{1}{2} \zeta_i Q_\alpha \sigma^i_{\alpha \beta} Q^+_\beta)\right) \\
+= \chi_{\bar{A}}\left( \exp(\zeta_i \bar{g}^i) \right) \chi_F \left( \frac{1}{2} Q_\alpha \sigma^i_{\alpha \beta} Q^+_\beta \right)
+= \chi_A \left( \exp (\zeta_i g^i) \right) \chi_{1\otimes F} \left( \exp(\zeta_i g^i) \right)
+\end{multline}
+
+\begin{verbatim}
+\begin{multline}
+\chi_{\bar{A}\otimes F}(\exp(\zeta_i g^i))  = ... \\
+= \chi_{\bar{A}} ...  \left( \exp(\zeta_i g^i) \right)
+\end{multline}
+\end{verbatim}
+
+Es gilt zu beachten, dass die erste Zeile des \texttt{multline}-Environments immer linksbündig steht und die letzte rechtsbündig. Alle dazwischen liegenden Zeilen werden zentriert dargestellt:
+
+\begin{multline}\label{eq:multa}
+\framebox[.65\columnwidth]{A}\\
+\framebox[.5\columnwidth]{B}\\
+\framebox[.55\columnwidth]{C}\\
+\framebox[.4\columnwidth]{D}\\
+\framebox[.65\columnwidth]{E}
+\end{multline}
+Dies kann für die mittleren Zeilen mit den Befehlen \texttt{shoveleft} und \texttt{shoveright} überschrieben werden. Es muss dann die gesamte Zeile als Parameter zu einem dieser Befehle übergeben werden, aber \textbf{nicht} das abschließende "`$\backslash\backslash$"'. Wären in Beispiel \ref{eq:multa} die mittleren Zeilen nach links verschoben, sähe das Bild so aus:
+\begin{multline}\label{eq:multb}
+\framebox[.65\columnwidth]{A}\\
+\shoveleft{\framebox[.5\columnwidth]{B}}\\
+\shoveleft{\framebox[.55\columnwidth]{C}}\\
+\shoveleft{\framebox[.4\columnwidth]{D}}\\
+\framebox[.65\columnwidth]{E}
+\end{multline}
+
+Formatieren wir das Beispiel \ref{eq:chi} noch einmal in mehrere Zeilen. Dann sieht es wie folgt mit einer zentrierten mittleren Zeile aus:
+\begin{multline}
+\chi_{\bar{A}\otimes F}(\exp(\zeta_i g^i)) = \chi_{\bar{A}\otimes F}\left( \exp(\zeta_i \bar{g}^i) \exp(\frac{1}{2} \zeta_i Q_\alpha \sigma^i_{\alpha \beta} Q^+_\beta)\right) \\
+= \chi_{\bar{A}}\left( \exp(\zeta_i \bar{g}^i) \right) \chi_F \left( \frac{1}{2} Q_\alpha \sigma^i_{\alpha \beta} Q^+_\beta \right) \\
+= \chi_A \left( \exp (\zeta_i g^i) \right) \chi_{1\otimes F} \left( \exp(\zeta_i g^i) \right)
+\end{multline}
+
+Ich persönlich halte nicht viel von diesem Environment, ich arbeite lieber mit orientierten Gleichungen, wie in folgendem Beispiel als \texttt{split}:
+
+\begin{equation}
+\begin{split}
+\chi_{\bar{A}\otimes F}(\exp(\zeta_i g^i)) &= \chi_{\bar{A}\otimes F}\left( \exp(\zeta_i \bar{g}^i) \exp(\frac{1}{2} \zeta_i Q_\alpha \sigma^i_{\alpha \beta} Q^+_\beta)\right) \\
+&= \chi_{\bar{A}}\left( \exp(\zeta_i \bar{g}^i) \right) \chi_F \left( \frac{1}{2} Q_\alpha \sigma^i_{\alpha \beta} Q^+_\beta \right) \\
+&= \chi_A \left( \exp (\zeta_i g^i) \right) \chi_{1\otimes F} \left( \exp(\zeta_i g^i) \right)
+\end{split}
+\end{equation}
+
+\subsubsection{Align}
+
+AMS hat noch ein weiteres Environment, das für Tabellarische Übersichten geeignet ist. Es wird auf die volle Breite der Darstellung aufgespannt. Das \texttt{align}-Environment
+
+\begin{align}
+x&=y & X&=Y & x'&=y' \\
+a&=b & A&=B & a'&=b'
+\end{align}
+
+Codiert als 
+
+\begin{verbatim}
+\begin{align}
+x&=y & X&=Y & x'&=y' \\
+a&=b & A&=B & a'&=b'
+\end{align}
+\end{verbatim}
 

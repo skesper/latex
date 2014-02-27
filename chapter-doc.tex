@@ -1,7 +1,7 @@
 
 \chapter{Dokumente und Klassen}\label{chap:doc}
 
-Wie bereits gesagt besitzen \LaTeX\ Dokumente immer eine Dokument-Klasse. Diese bestimmt in erster Linie das Aussehen des finalen Dokuments. Wie die Menge an Packages vermuten lässt, gibt es auch eine recht unübersichtliche Anzahl von Dokument-Klassen. Wir werden uns um zwei \LaTeX\ Hauptklassen kümmern, zum einen die \texttt{article}-Klasse sowie die \texttt{book}-Klasse.
+Wie bereits gesagt besitzen \LaTeX\ Dokumente immer eine Dokument-Klasse\index{Dokument-Klasse}. Diese bestimmt in erster Linie das Aussehen des finalen Dokuments. Wie die Menge an Packages vermuten lässt, gibt es auch eine recht unübersichtliche Anzahl von Dokument-Klassen. Wir werden uns um zwei \LaTeX\ Hauptklassen kümmern, zum einen die \texttt{article}-Klasse sowie die \texttt{book}-Klasse.
 
 Später werden wir noch die \texttt{amsbook}-Klasse und \texttt{tufte}-Klassen kennen lernen. Die KOMA-Skript Klassen hätten sicher einen Platz hier verdient, jedoch ist ihre Funktionalität so umfangreich, dass wir an dieser Stelle nur auf ihre Dokumentation verweisen können mit dem Hinweis, dass es sich lohnt damit auseinander zu setzen.
 \begin{verbatim}
@@ -302,7 +302,7 @@ alles untertan ist.
 \end{flushright}
 \end{quote}
 \end{verbatim}
-Man beachte, dass gleich zwei Environments verwendet wurden, das \texttt{quote}- und das \texttt{flushright}-Environment. Letzteres setzt den Text rechtsbündig. Hätte man dieses nicht innerhalb des \texttt{quote}-Environments verwendet, wäre es bis zum eigentlichen Rand verschoben worden, wie im folgenden Beispiel:
+Man beachte, dass gleich zwei Environments verwendet wurden, das \texttt{quote}- und das \texttt{flushright}-Environment. Letzteres setzt den Text rechtsbündig. Hätte man dieses nicht innerhalb des \texttt{quote}-Environments verwendet, wäre es bis zum eigentlichen Seiten-Rand verschoben worden, wie im folgenden Beispiel:
 
 \begin{quote}
 Mag das Geld auch den Charakter des bloß Nützlichen haben, so 
@@ -360,3 +360,35 @@ Die eckigen Klammern hinter dem \texttt{begin}-Befehl stellen Parameter zum gew�
 \item[p] Die Zeichnung soll auf einer eigenen Seite erscheinen.
 \end{description}
 Eine Abbildung benötigt immer eine gewisse Menge Platz. Sollte der Parameter \texttt{h} verwendet worden sein und an der Stelle, wo die Abbildung eingesetzt werden soll, nicht mehr genug Platz auf der Seite zur Verfügung stehen, wird sie trotz des \texttt{h} Parameters auf die nächste Seite verschoben und der Text, der eigentlich hinter der Abbildung auftauchen sollte, wird davor gesetzt.
+
+\section{Andere Dokument-Klassen}
+
+\subsection{\texttt{amsbook}-Klasse}
+TODO
+
+\subsection{\texttt{memoir}-Klasse}
+TODO
+
+\subsection{\texttt{tufte-book}-Klasse}
+TODO
+
+\subsection{\texttt{tufte-handout}-Klasse}
+TODO
+
+
+\section{Lizenzen}
+
+Diverse professionelle Verlage haben eigene Dokumentklassen erzeugt und stellen diese kostenlos zum Download zur Verfügung. Dies soll in erster Linie den Autoren, die ein Sachbuch für diesen Verlag schreiben, als Erleichterung dienen -- und natürlich dem Verlag, der dann später nicht das gesamte Dokument umformatieren muss. 
+
+Die Verlage stellen diese Klassen in aller Regel ohne weitere Lizenz-Angaben zur Verfügung. Läge eine GNU Public License dabei oder irgendetwas anderes, wäre die Situation klar. Aber so begibt man sich erstmal in eine rechtliche Grauzone. Meiner Meinung nach -- und ich bin kein Jurist, also ist dies ohne Gewähr zu verstehen -- legen die Verlage auf die Form (sprich die Dokumentklasse) keinen ernsthaften Wert. Für sie ist der Inhalt von Relevanz und darauf baut ihr Geschäftsmodell auf, nicht die Form der Veröffentlichung. Daher liegt diesen Dokumentklassen vermutlich auch keine Lizenz bei. 
+
+Ich gehe davon aus, dass man, solange man nicht kommerziell mit den Verlagsklassen arbeitet, diese ohne Weiteres verwenden kann. Man sollte allerdings jegliche Verlags-Logos und -Namen entfernen. Bei einer Abschlussarbeit bekommt man da vermutlich keinerlei Probleme.
+
+Will man sich vollständig absichern, lohnt es sich, dem Verlag eine Mail zu schreiben und nachzufragen, ob man die Klasse für eine Abschlussarbeit verwenden darf. Der Verlag wird -- sofern er sich zu einer Antwort aufraffen kann -- dies vermutlich nicht ablehnen, allerdings wie oben beschrieben, darauf bestehen, dass Logos und Verlagsname entfernt wird. 
+
+Im Fall der American Mathematical Society gibt es die \texttt{amsbook}-Klasse, die den \LaTeX-Distributionen grundsätzlich beiliegt. Auf dieser liegt selbstverständlich keine proprietäre Lizenz und man kann sie auch für kommerzielle Projekte nutzen. Allerdings hat die AMS auch weitere Klassen, wie zum Beispiel die \texttt{gsm-l}-Klasse für die \textsl{Graduate Studies in Mathematics} Reihe. Hier muss man schon etwas vorsichtiger sein. Allerdings steht im Klassenfile der Hinweis, dass, falls die Klasse umbenannt wird, sie auch verändert werden darf, was einer Nutzung in anderem kommerziellen Zusammenhang entsprechen würde. 
+
+Aber, um es noch einmal zu sagen: Ich bin kein Jurist, also sind alle Hinweise hier ohne Gewähr. Wenn Sie eine kommerzielle Klasse einsetzen möchten, machen Sie sich bitte selbst schlau. 
+
+
+

@@ -3,13 +3,13 @@
 
 \section{Was ist \LaTeX ?}
 
-Ein klein-wenig Geschichte. 1977 begann die Entwicklung von \TeX\ durch Prof. Donald E. Knuth. Laut Hören-Sagen war Knuth mit dem Satz seines grundlegenden Werkes "`The Art of Computer Programming"' durch seinen Verlag Ad\-di\-son-Wesley unzufrieden. Daraufhin beschloss er, sein eigenes Satz System zu entwickeln. Was als Projekt "`über den Sommer"' hin konzipiert war, dauerte insgesamt elf Jahre. 
+Ein klein wenig Geschichte. 1977 begann die Entwicklung von \TeX\ durch Prof. Donald E. Knuth\index{Knuth, Donald E.}. Laut Hören-Sagen war Knuth mit dem Satz seines grundlegenden Werkes "`The Art of Computer Programming"' durch seinen Verlag Ad\-di\-son-Wesley unzufrieden. Daraufhin beschloss er, sein eigenes Satz System zu entwickeln. Was als Projekt "`über den Sommer"' hin konzipiert war, dauerte insgesamt elf Jahre. 
 
-\TeX\ besteht zunächst aus einem Satz von Programmen. Diese sind einem Compiler nicht unähnlich. Der \TeX-Compiler liest den "`Source-Code"' ein und bereitet diesen in einer vom Ausgabe-Gerät unabhängigen Weise auf (englisch Device Independent, abk. DVI). Des Weiteren gab es ein Anzeigeprogramm für DVI Dateien mit einer Druckfunktion, sowie weitere Programme mit unterschiedlichsten Zielen. Wichtig dabei ist noch das dvi2ps Tool, das Device Independent Dateien in sogenannte PostScript (PS) Dateien umwandeln konnte. PostScript ist eine Druckerbeschreibungssprache, die besonders in den achtziger und neunziger Jahren Verwendung fand. Mit Aufkommen des PDF Formats spielte PostScript aber keine ernsthafte Rolle mehr. Heute wird auch oft das pdftex und pdflatex verwendet, deren Ausgabe direkt, ohne Umweg über das DVI Format, in PDF Dateien erfolgt. 
+\TeX\ besteht zunächst aus einem Satz von Programmen. Diese sind einem Compiler nicht unähnlich. Der \TeX-Compiler liest den "`Source-Code"' ein und bereitet diesen in einer vom Ausgabe-Gerät unabhängigen Weise auf (englisch Device Independent, abk. DVI)\index{DVI}. Des Weiteren gab es ein Anzeigeprogramm für DVI Dateien mit einer Druckfunktion, sowie weitere Programme mit unterschiedlichsten Zielen. Wichtig dabei ist noch das dvi2ps Tool, das Device Independent Dateien in sogenannte PostScript (PS) Dateien umwandeln konnte. PostScript ist eine Druckerbeschreibungssprache, die besonders in den achtziger und neunziger Jahren Verwendung fand. Mit Aufkommen des PDF Formats spielte PostScript aber keine ernsthafte Rolle mehr. Heute wird auch oft das pdftex und pdflatex verwendet, deren Ausgabe direkt, ohne Umweg über das DVI Format, in PDF Dateien erfolgt. 
 
 In der Folge wurden viele Zusatztools und Erweiterungen zu \TeX\ geschrieben, sodass aus dem ursprünglich einfachen Satzsystem für wissenschaftliche Veröffentlichungen ein unglaublich mächtiges Tool geworden ist. 
 
-Eine der wichtigsten und zentralen Erweiterungen ist das sogenannte Lamport \TeX, ein Sammlung von Makros, die durch Leslie Lamport anfang der 1980er Jahre entwickelt und veröffentlicht wurde. Von Lamports Namen leitet sich die Vorsilbe "`La"' in \LaTeX\ ab.
+Eine der wichtigsten und zentralen Erweiterungen ist das sogenannte Lamport \TeX, ein Sammlung von Makros, die durch Leslie Lamport\index{Lamport, Leslie} anfang der 1980er Jahre entwickelt und veröffentlicht wurde. Von Lamports Namen leitet sich die Vorsilbe "`La"' in \LaTeX\ ab.
 
 \section{Wo beginnen wir?}
 
@@ -17,7 +17,7 @@ Aufgrund dessen, dass man mit \LaTeX\ ohne hin alles tun kann, was man in \TeX\ 
 
 \subsection{Das minimale Dokument}
 
-Wie in der Programmierung üblich, beginnen wir mit einem "`Hello World"'
+Wie in der Programmierung üblich, beginnen wir mit einem "`Hello World"'\index{Hello World}
 \begin{verbatim}
 \documentclass{article}
 
@@ -67,11 +67,11 @@ In Kapitel \ref{chap:doc} gehe ich darauf ein, welche Bedeutung die Dokumentklas
 
 \section{Distribution und Installation}
 
-Es gibt diverse \TeX-Distributionen. Eine der umfangreichsten und gleichzeitig meist-verwendeten ist die \TeX-Live Distribution der \TeX-User-Group (TUG). Unter der URL 
+Es gibt diverse \TeX-Distributionen. Eine der umfangreichsten und gleichzeitig meist-verwendeten ist die \TeX-Live Distribution der \TeX-User-Group (TUG)\index{TUG}. Unter der URL 
 \begin{verbatim}
 https://www.tug.org/texlive/acquire-iso.html
 \end{verbatim}
-bekommen Sie ein ISO Image der gerade aktuellen \TeX-Live Distribution. Es gibt auch einen sogenannten "`net-installer"'. Ich habe diesen diverse Male ausprobiert, scheiterte aber immer wieder an (vermutlich) meinem Internetprovider. Bei mir schlug der Netzinstalliervorgang immer nach einigen Stunden fehl und ich konnte von Neuem beginnen. Hinzu kommt, dass der Download des ISO Files i.a. schneller ist, als für jede Datei einzeln einen Download durch den Net-Installer durchführen zu lassen. 
+bekommen Sie ein ISO Image der gerade aktuellen \TeX-Live\index{\TeX-Live} Distribution. Es gibt auch einen sogenannten "`net-installer"'. Ich habe diesen diverse Male ausprobiert, scheiterte aber immer wieder an (vermutlich) meinem Internetprovider. Bei mir schlug der Netzinstalliervorgang immer nach einigen Stunden fehl und ich konnte von Neuem beginnen. Hinzu kommt, dass der Download des ISO Files i.a. schneller ist, als für jede Datei einzeln einen Download durch den Net-Installer durchführen zu lassen. 
 
 Das ISO File kann man entweder als Laufwerk Mounten\footnote{Hierfür braucht man eine zusätzliche Software, z.B. das kostenlose Virtual CloneDrive der Firma slysoft.com. } oder brennt sie auf ein DVD Rohling. 
 
@@ -98,7 +98,7 @@ zu setzen.
 Auch wenn ich hier drei Editoren anspreche, so ist die Wahl des geeigneten Editors immer eine Frage des persönlichen Geschmacks. Manche wollen, dass der Editor möglichst schnell und leichtgewichtig ist und verzichten dafür auf Funktionalität. Andere bevorzugen eine integrierte und möglichst weitgehende Unterstützung beim Schreiben von \TeX-Makros. Die Entscheidung, welcher Editor zum Einsatz kommt, sollten Sie in Ruhe alleine treffen. Alle diese Editoren haben gewisse Vor- und Nachteile. Es spricht nichts dagegen, auch mehrere Editoren für verschiedene Aufgaben zu verwenden. Machen Sie sich selbst ein Bild!
 
 
-\subsection{TeXworks}
+\subsection{TeXworks}\index{TeXworks}
 
 TeXworks wird während der Installation von \TeX-Live Distribution gleich mit installiert -- sofern man ihn nicht abgewählt hat. TeXworks ist ein zwei Fester Editor, im linken Fenster schreibt man den \TeX-Code und im rechten wird das Dokument in PDF oder DVI dargestellt. Folgende Features sind enthalten:
 
@@ -110,7 +110,7 @@ TeXworks wird während der Installation von \TeX-Live Distribution gleich mit in
 
 Leider kann ich nicht viel mehr über diesen Editor sagen. Er ist sicher ausreichend, um mit \LaTeX\ zu arbeiten, aber Unterstützung bekommt man nur in sehr eingeschränkter Form.
 
-\subsection{TeXstudio und TeXmaker}
+\subsection{TeXstudio und TeXmaker}\index{TeXstudio}\index{TeXmaker}
 
 TeXstudio und TeXmaker sind relativ ähnliche Editoren mit einem vergleichbaren Funktionsumfang. Ich bin bei beiden nicht in die allerletzten Tiefen vorgedrungen, vielleicht unterscheiden sie sich doch noch irgendwo, aber auf den ersten Blick fällt es mir schwer einen markanten Unterschied festzustellen. 
 
@@ -132,7 +132,7 @@ Hier ein paar Pakete, die Einsicht in die Leistungsfähigkeit von \LaTeX\ bieten
 
 \subsection{Skak Paket}
 
-Schach-Enthusiasten werden sich darüber freuen. Das Skak Paket bietet auf sehr einfache Weise die Möglichkeit Schachpartien zu dokumentieren. Die Eingabe folgt dabei der üblichen Nomenklatur. Das in Abbildung \ref{fig:rybov} dargestellte Schachrett wurde mit den folgenden Befehlen erzeugt:
+Schach-Enthusiasten werden sich darüber freuen. Das Skak\index{Skak-Paket} Paket bietet auf sehr einfache Weise die Möglichkeit Schachpartien zu dokumentieren. Die Eingabe folgt dabei der üblichen Nomenklatur. Das in Abbildung \ref{fig:rybov} dargestellte Schachrett wurde mit den folgenden Befehlen erzeugt:
 \begin{verbatim}
 \newgame
 \mainline{1.e4 e5}
@@ -159,7 +159,7 @@ Schach-Enthusiasten werden sich darüber freuen. Das Skak Paket bietet auf sehr 
 \newpage
 \subsection{Zeichnungen mit Ti\textit{k}Z}
 
-Mit dem Ti\textit{k}Z und PGF Paket hat man unter \LaTeX\ eine herausragende Möglichkeit Zeichnungen herzustellen. Das Beispiel in Abbildung \ref{fig:tikz} ist aus dem Ti\textit{k}Z Manual \cite{tikman} von Till Tantau entnommen.
+Mit dem Ti\textit{k}Z und PGF\index{TikZ}\index{PGF} Paket hat man unter \LaTeX\ eine herausragende Möglichkeit Zeichnungen herzustellen. Das Beispiel in Abbildung \ref{fig:tikz} ist aus dem Ti\textit{k}Z Manual \cite{tikman} von Till Tantau\index{Tantau, Till} entnommen.
 
 \begin{figure}[h]
 \begin{tikzpicture}

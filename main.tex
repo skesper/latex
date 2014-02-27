@@ -1,4 +1,9 @@
-\documentclass[]{book}
+\documentclass[]{memoir}
+
+% Zur Memoir Klasse:
+% Setze Nummerierung bis subsection fort.
+\setsecnumdepth{subsection}
+
 
 % Damit wir Umlaute verwenden können. Achtung! UTF-8 Encoding, nicht jeder Editor kann das.
 % Besonders Windows Editoren verwenden oft das windows-1252 bzw. Latin-1252 Encoding.
@@ -12,6 +17,7 @@
 % Andere Fonts
 %\usepackage{cmbright}
 \usepackage{fouriernc}
+%\usepackage{euler} %%% Vorsicht bei fouriernc! Falsche Darstellung von Formeln!!!
 
 % AMS Mathe Bibliotheken
 \usepackage{amsmath}
@@ -82,6 +88,7 @@
 \node[overlay,fancy quotes closing,anchor=east] at (fq@txt.south east) {};
 \endtikzpicture}
 
+\makeindex
 
 % Das eigentliche Dokument
 \begin{document}
@@ -133,9 +140,13 @@ PROJECT
 
 \include{chapter-doc}
 
+\include{chapter-fonts}
+
 \include{chapter-cite}
 
-\include{chapters}
+\include{chapter-tables}
+
+\include{chapter-instpack}
 
 \include{chapter-formel}
 
