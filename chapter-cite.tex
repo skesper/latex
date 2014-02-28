@@ -5,7 +5,7 @@ Im Besonderen für wissenschaftliche Werke und Abschlussarbeiten ist der korrekt
 
 \section{Einfaches Verzeichnis}
 
-Der Vollständigkeit halber wird hier auch das einfache Verzeichnis erwähnt. Bei wenigen Verweisen kann dies auch ausreichen. Die Syntax zur Definition eines Literaturverweises ist die folgende:
+Der Vollständigkeit halber wird hier auch das einfache Verzeichnis erwähnt. Bei wenigen Verweisen kann dies auch ausreichen. Die Syntax zur Definition eines Literaturverweises ist die folgende:\index{bibitem}
 \begin{verbatim}
 \bibitem{interne-referenz}Autor(en):
            \emph{Titel der Veröffentlichung}. Verlag,
@@ -21,7 +21,7 @@ Beispiel:
   1983/1985.
 \end{verbatim}
 
-So erzeugte Literatureinträge müssen vom Anwender selbst in die korrekte Reihenfolge gebracht und an der richtigen Stelle ins Dokument eingefügt werden. Dies sollte auf jeden Fall über eine eigenständige \LaTeX-Datei erfolgen, z.B. \texttt{literatur.tex}. Ein vollständiges Literaturverzeichnis sieht so aus:
+So erzeugte Literatureinträge müssen vom Anwender selbst in die korrekte Reihenfolge gebracht und an der richtigen Stelle ins Dokument eingefügt werden. Dies sollte auf jeden Fall über eine eigenständige \LaTeX-Datei erfolgen, z.B. \texttt{literatur.tex}. Ein vollständiges Literaturverzeichnis sieht so aus:\index{thebibliography}
 \begin{verbatim}
 \begin{thebibliography}{123}
 
@@ -36,19 +36,19 @@ So erzeugte Literatureinträge müssen vom Anwender selbst in die korrekte Reihe
 \end{verbatim}
 Das \texttt{thebibliography}-Environment stellt die Literaturangaben auf einer eigenen Seite mit der Überschrift "`Literaturverzeichnis"' dar. Zu beachten ist, dass der Parameter 123 nichts weiter bedeutet, als dass möglicherweise dreistellige Literaturangaben entstehen könnten (das sind 1000 Referenzen). Es können durchaus weniger sein, das spielt keine Rolle. 
 
-Eine Referenz im Text auf diese Literaturangabe wird über den Befehl
+Eine Referenz im Text auf diese Literaturangabe wird über den Befehl\index{cite}
 \begin{verbatim}
 \cite{Brieskorn1}
 \end{verbatim}
 realisiert. Üblicherweise ist dies dann eine Angabe der Form "`[1]"' (ohne Anführungsstriche). Die Literaturangaben werden nicht sortiert, das bedeutet, sie werden in der Reihenfolge angezeigt, wie sie im literatur.tex File enthalten sind. 
 
-\section{Das BibTeX Tool}
+\section{Das BibTeX Tool}\index{bibtex}
 
 Eine sehr viel elegantere Methode zur Verwaltung der Literaturangaben bietet das BibTeX Tool, sie werden in einer quasi Datenbank abgelegt. Der Begriff "`Datenbank"' ist an dieser Stelle etwas hoch gegriffen, die Literaturangaben werden lediglich in einem File gesammelt, unabhängig davon, ob sie jemals verwendet werden, oder nicht. Das erspart Arbeit (auch wenn es nicht so klingt), denn der Anwender braucht sich keine Gedanken darüber zu machen, ob er je die Literaturangabe benötigt. Macht er keine Referenz darauf, taucht sie nicht im Literaturverzeichnis auf. Zusätzlich werden die Literaturangaben automatisch nach dem Nachnamen des Autors alphabetisch sortiert. 
 
 \subsection{Aufbau der Datenbank}
 
-BibTeX hat ein eigenes Format, wie Literatur Referenzen gespeichert werden. An einem Beispiel wollen wir uns das näher ansehen:
+BibTeX hat ein eigenes Format, wie Literatur Referenzen gespeichert werden. An einem Beispiel wollen wir uns das näher ansehen: \index{BOOK}
 \begin{verbatim}
 @BOOK{Brieskorn1983, 
 	title="{Lineare Algebra und Analytische Geometrie I: 
@@ -83,11 +83,11 @@ Unabhängig davon ist das BibTeX Format aber allgegenwärtig, sodass viele Bibli
 
 Das oben angegebene Buch von Egbert Brieskorn würde dann als BibTeX Eintrag in der folgenden Art zitiert: \cite{Brieskorn1983a}, der zweite Band ist \cite{Brieskorn1983b}
 
-In Ihrem \TeX-Dokument müssen dann die Zeilen
+In Ihrem \TeX-Dokument müssen dann die Zeilen\index{bibliographystyle}\index{bibliography}\index{amsalpha}
 \begin{verbatim}
 \bibliographystyle{amsalpha}
 \bibliography{literature}
 \end{verbatim}
 an der Stelle erscheinen, wo das Literaturverzeichnis auftauchen soll, also meistens am Ende. 
 
-Wir verwenden hier den \texttt{amsalpha}-Style für die Literaturreferenzen. Das führt zu Referenzen der form \cite{Raymond:2014uha}. Der \texttt{plain}-Style würde zu Referenzen der Form [1], [2], usw. führen.
+Wir verwenden hier den \texttt{amsalpha}-Style für die Literaturreferenzen. Das führt zu Referenzen der Form \cite{Raymond:2014uha}. Der \texttt{plain}-Style würde zu Referenzen der Form [1], [2], usw. führen.

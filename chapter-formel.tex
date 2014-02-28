@@ -3,7 +3,7 @@
 
 Eine der wichtigsten Anwendungen von \LaTeX\ ist der Formelsatz. Es ist zum quasi Standard geworden, sobald Formeln in einer Veröffentlichung auftauchen. Ich hoffe, in den vorherigen Kapiteln deutlich gemacht zu haben, dass es sich auch dann lohnt \LaTeX\ einzusetzen, wenn man keine Formeln verwendet. Aber sollte man es tun, führt praktisch kein Weg an \LaTeX\ vorbei.
 
-Es hat sich als praktisch erwiesen, grundsätzlich die von der AMS\footnote{American Mathematical Society} definierten und in den \LaTeX-Distributionen in aller Regel vorhandenen Pakete zu verwenden. AMS hat folgende Pakete definiert und veröffentlicht:
+Es hat sich als praktisch erwiesen, grundsätzlich die von der AMS\footnote{American Mathematical Society} definierten und in den \LaTeX-Distributionen in aller Regel vorhandenen Pakete zu verwenden. AMS hat folgende Pakete definiert und veröffentlicht:\index{amsmath} \index{amsfonts} \index{amssymb}
 
 \begin{description}
 \item[\texttt{amsmath}] enthält eine Vielzahl von nützlichen Erweiterungen. Unter anderem Verbesserungen des \texttt{equation}-Environments, vereinfachte/verbesserte mehrzeilige Formeldartellung. \texttt{align}-Environments, sowie die \texttt{text}-Umgebung innerhalb des Formelsatzes und viele Symbole.
@@ -22,14 +22,14 @@ Die Nutzung dieser Bibliotheken hat sich so sehr eingebürgert, dass das TeXstud
 \end{verbatim}
 Sie können diese natürlich auch manuell eintragen.
 
-\section{Display-Styles}\
+\section{Display-Styles}
 
 Mathematische Formeln werden verschiedenen dargestellt, zum einen im normalen Text (inline) und zum anderen als zentrierte Formel in einem eigenen Absatz (Display-Style). Alles, was über den Formelsatz im Display-Style gesagt werden kann, trifft auch für den inline Satz zu. Allerdings werden die Formeln im inline Satz meist flacher dargestellt, was dazu führt, dass hoch- oder tiefgestellte Informationen gegebenenfalls an anderen Stellen auftauchen, doch dazu später mehr.
 
-\subsection{Inline Style} \label{sec:inline}
+\subsection{Inline Style} \label{sec:inline}\index{Inline Style}
 TODO
 
-\subsection{Display Style}
+\subsection{Display Style}\index{Display-Style}
 Der Display-Style von Formeln stellt diese -- wie gesagt -- zentriert in einem eigenen Absatz dar:
 
 \begin{equation}
@@ -37,7 +37,7 @@ Der Display-Style von Formeln stellt diese -- wie gesagt -- zentriert in einem e
 	\int_{\mathbb{R}^n} f(x)e^{-itx} dx
 \end{equation}
 
-Der Display-Style wird eingesetzt, wenn Code im \texttt{equation}-Environment geschrieben wird:
+Der Display-Style wird eingesetzt, wenn Code im \texttt{equation}-Environment geschrieben wird:\index{equation}
 \begin{verbatim}
 \begin{equation}
 \mathcal{F}(f)(t) = \frac{1}{(2\pi)^{\frac{n}{2}}} 
@@ -53,7 +53,7 @@ Will man keine Nummerierung der Formel, kann das \texttt{equation*}-En\-vi\-ron\
 	\int_{\mathbb{R}^n} f(x)e^{-itx} dx
 \end{equation*}
 \end{verbatim}
-ergibt
+ergibt\index{equation*}
 \begin{equation*}
 \mathcal{F}(f)(t) = \frac{1}{(2\pi)^{\frac{n}{2}}} 
 	\int_{\mathbb{R}^n} f(x)e^{-itx} dx
@@ -73,11 +73,12 @@ Die in Tabelle \ref{tab:greek} dargestellten griechischen Zeichen stehen nur im 
 
 Sollen Absätze oder ganze Texte in griechisch formatiert werden, müssen Pakete verwendet werden, bzw. falls der gesamte Text in griechisch gesetzt werden soll, reicht es das Font-Encoding anzupassen.
 
-\begin{table}[t]
+\index{Griechische Zeichen}
+\begin{table}[h]
 \centering
 \begin{tabular}{c|l|c|l|l}
 \hline
-\textbf{Kleinbuchstaben} & \textbf{\LaTeX-Code} & \textbf{Großbuchstaben} & \textbf{\LaTeX-Code} & \textbf{Bezeichnung} \\
+\textbf{Minuskel} & \textbf{\LaTeX-Code} & \textbf{Majuskel} & \textbf{\LaTeX-Code} & \textbf{Bezeichnung} \\
 \hline
 $\alpha $ & $\backslash$alpha & $A $ & A & Alpha \\
 $\beta $ & $\backslash$beta & $B $ & B & Beta \\
@@ -145,7 +146,7 @@ A_i,j
 \end{equation}
 wird. Die Block-Klammern $\lbrace \rbrace$ sollten häufig verwendet werden, sie haben nur strukturellen Einfluss auf das Schriftbild, zusätzliche Klammern (auch wenn sie überflüssig sind), werden ignoriert. Daher ist es besser ggf. zu viele Klammern zu verwenden, als zu wenige.
 
-\section{Dots! More Dots!}
+\section{Dots! More Dots!}\index{Auslassungspunkte}
 
 Auslassungen, Reihen und Listen werden in der Mathematik oft mit Punkten verkürzt dargestellt. Hierfür gibt es mehrere Varianten, wie in Tabelle \ref{tab:dots} gezeigt:
 
@@ -172,7 +173,7 @@ $A_1\dotso A_N$ & $\backslash$dotso & "`andere"' Punkte -- keine der obigen \\
 
 Die Unterschiede im Schriftbild zwischen den verschiedenen Varianten sind oft kaum zu sehen, das kann aber am verwendeten Font liegen. Wählt man einen anderen, können die Unterschiede wiederum markant sein. Daher ist es sinnvoll, die entsprechenden Punkte Makros ihrer Bestimmung nach zu verwenden. Auch wenn der Unterschied im ersten Augenblick nicht ersichtlich ist. 
 
-\section{Klammern}
+\section{Klammern}\index{Klammern}
 
 \subsection{\texttt{left} und \texttt{right}}
 
@@ -228,7 +229,7 @@ S_n = \{ x | x\in \mathbb{R}^n, \vert x\vert = 1 \}
 eine andere Formatierung aufweist, auch wenn die Unterschiede in diesem Fall subtiler und nicht so stark ausfallen, wie in Gleichung \ref{eq:int}. Wie das letzte Beispiel zeigt, hängt die unterschiedliche Darstellung unter anderem auch von der Verwendung des Mathematik Fonts ab. In diesem Dokument verwenden wir den \texttt{fourier} Mathematik Font. Im Standard Computer Modern Font, ist ein Unterschied in den Klammern aus den Gleichungen (\ref{eq:s1}) und (\ref{eq:s2}) kaum auszumachen. 
 
 \subsection{Manuelle Klammergrößen}
-
+\index{Klammergrößen}
 Falls eine automatische Größenanpassung nicht das gewünschte Ergebnis liefert, oder -- wie im Fall der \texttt{left}- und \texttt{right}-Befehle -- geschachtelte Klammern nicht zu einer Anpassung der Klammergrößen führen, kann man manuell eingreifen. Die Befehle 
 \begin{verbatim}
 \Bigg( \bigg( \Big( \big( ( \dots ) \big) \Big) \bigg) \Bigg)
@@ -245,6 +246,7 @@ Matrizen -- und auch Vektoren, die einspaltige Matrizen sind -- werden mit der F
 
 Eine einfache Matrix, bei der man selbst die Klammerdarstellung bestimmen möchte, wird mit dem \texttt{matrix}-Environment formatiert:
 
+\index{matrix-Umgebung}
 \begin{equation*}
 \begin{matrix}
 a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
@@ -288,7 +290,7 @@ a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
 \end{verbatim}
 
 \subsection{\texttt{pmatrix}}
-Eine Matrix wie oben mit runden Klammern kann auch ohne die \texttt{left}- und \texttt{right}-Befehle erzeugt werden. Hierfür steht das \texttt{pmatrix}-Environment zur Verfügung.
+Eine Matrix wie oben mit runden Klammern kann auch ohne die \texttt{left}- und \texttt{right}-Befehle erzeugt werden. Hierfür steht das \texttt{pmatrix}-Environment zur Verfügung.\index{pmatrix-Umgebung}
 \begin{equation*}
 \begin{pmatrix}
 a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n} \\
@@ -306,7 +308,7 @@ a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
 \end{pmatrix}
 \end{verbatim}
 
-\subsection{\texttt{bmatrix}}
+\subsection{\texttt{bmatrix}}\index{bmatrix-Umgebung}
 
 \begin{equation*}
 \begin{bmatrix}
@@ -325,7 +327,7 @@ a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
 \end{bmatrix}
 \end{verbatim}
 
-\subsection{\texttt{Bmatrix}}
+\subsection{\texttt{Bmatrix}}\index{Bmatrix-Umgebung}
 
 \begin{equation*}
 \begin{Bmatrix}
@@ -344,7 +346,7 @@ a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
 \end{Bmatrix}
 \end{verbatim}
 
-\subsection{\texttt{vmatrix}}
+\subsection{\texttt{vmatrix}}\index{vmatrix-Umgebung}
 
 \begin{equation*}
 \begin{vmatrix}
@@ -363,7 +365,7 @@ a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
 \end{vmatrix}
 \end{verbatim}
 
-\subsection{\texttt{Vmatrix}}
+\subsection{\texttt{Vmatrix}}\index{Vmatrix-Umgebung}
 
 \begin{equation*}
 \begin{Vmatrix}
@@ -382,7 +384,7 @@ a_{n,1} & a_{n,2} & a_{n,3} & \dots & a_{n,n} \\
 \end{Vmatrix}
 \end{verbatim}
 
-\subsection{\texttt{bordermatrix}}
+\subsection{\texttt{bordermatrix}}\index{bordermatrix-Befehl}
 
 Eine "`Bordermatrix"' wird verwendet, um Zeilen und Spalten mit Annotationen zu versehen. Im Gegensatz zu den vorherigen Befehlen, wird eine Bordermatrix nicht als Environment zur Verfügung gestellt, sondern muss mit dem Befehl \texttt{bordermatrix} eingeleitet werden.
 
@@ -420,7 +422,7 @@ Es muss hier ausdrücklich darauf hingewiesen werden, dass der Formel-Satz in \L
 
 \subsection{Der Standard}
 
-Im \LaTeX\-Standard gibt es das \texttt{eqnarray}-Environment. Dieses erlaubt es Gleichungen in einer Art Tabelle darzustellen:
+Im \LaTeX\-Standard gibt es das \texttt{eqnarray}-Environment. Dieses erlaubt es Gleichungen in einer Art Tabelle darzustellen:\index{eqnarray-Umgebung}
 
 \begin{verbatim}
 \begin{eqnarray}
@@ -444,6 +446,7 @@ f(x) &=& (x-1)\cdot (x-2) \\
 \subsubsection{Split}
 
 Die AMS hat das \texttt{split}-Environment hinzugefügt, mit dem das \texttt{equation}-Environment zu einem mehrzeiligen Environment gemacht werden kann.
+\index{split-Umgebung}
 
 \begin{equation}
 \begin{split}
@@ -466,6 +469,7 @@ Man beachte, dass das Gleichheitszeichen nicht von zwei \&-Zeichen umgeben ist.
 
 Eine sehr lange Formel, die umgebrochen werden muss, kann mit Hilfe des \texttt{multline}-Environments dargestellt werden.
 
+\index{multline-Umgebung}
 \begin{multline}\label{eq:chi}
 \chi_{\bar{A}\otimes F}(\exp(\zeta_i g^i))  = \chi_{\bar{A}\otimes F}\left( \exp(\zeta_i \bar{g}^i) \exp(\frac{1}{2} \zeta_i Q_\alpha \sigma^i_{\alpha \beta} Q^+_\beta)\right) \\
 = \chi_{\bar{A}}\left( \exp(\zeta_i \bar{g}^i) \right) \chi_F \left( \frac{1}{2} Q_\alpha \sigma^i_{\alpha \beta} Q^+_\beta \right)
@@ -518,6 +522,7 @@ Ich persönlich halte nicht viel von diesem Environment, ich arbeite lieber mit 
 
 AMS hat noch ein weiteres Environment, das für Tabellarische Übersichten geeignet ist. Es wird auf die volle Breite der Darstellung aufgespannt. Das \texttt{align}-Environment
 
+\index{align-Umgebung}
 \begin{align}
 x&=y & X&=Y & x'&=y' \\
 a&=b & A&=B & a'&=b'
