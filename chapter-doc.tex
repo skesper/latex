@@ -34,7 +34,7 @@ Zwischen \texttt{begin\{document\}} und \texttt{end\{document\}} steht der eigen
 \item[\&] Ist ein sogenannter Tab-Character. In Tabellen oder Matrizen wird dieser verwendet. Die Nutzung wird in den Kapiteln \ref{chap:table} und \ref{chap:formel} erklärt.
 \end{description}
 
-Bis auf das Backslash selbst kann jedes dieser Zeichen "`Escaped"'\index{Escaped} werden, das bedeutet, man zeigt \LaTeX\ an, dass man das Zeichen selbst benutzen will und nicht an seine Bedeutung für \LaTeX\ interessiert ist. Dies macht man mit dem Backslash. Also schreibt man das solche Zeichen einfach als 
+Bis auf das Backslash kann jedes dieser Zeichen "`Escaped"'\index{Escaped} werden, das bedeutet, man zeigt \LaTeX\ an, dass man das Zeichen selbst benutzen will und nicht an seine Bedeutung für \LaTeX\ interessiert ist. Dies macht man mit dem Backslash. Also schreibt man das solche Zeichen einfach als 
 \begin{verbatim}
 \% \& \$
 \end{verbatim}
@@ -62,8 +62,8 @@ Aber dafür hier.
 Wird von \LaTeX\ zu:
 
 \bigskip
-\small
 
+\small
 Erste Zeile,
 hier wird noch kein neuer Absatz erzeugt. Hier schreibe ich noch die Zeile voll, damit der erste Umbruch erreicht wird.
 
@@ -238,7 +238,7 @@ angibt. Zum Inhaltsverzeichnis ist noch einiges zu sagen, was ich in Abschnitt \
 
 Wenn man vor hat, einen längeren Text zu schreiben, gegebenenfalls mehrere hundert Seiten lang, so sollte man überlegen, eine Buch Klasse zu verwenden. Die einfachste unter diesen ist die \texttt{book}-Klasse.
 
-In Büchern kann man die \texttt{part} und \texttt{chapter} Struktur-Befehle verwenden. Ein Part ist ein "`Teil"' eines Buches. Wenn Sie nicht wissen, ob und wo Sie Teile verwenden sollten, tun Sie es lieber nicht. Sollten Sie zwei Bücher zu einem machen, können (vielleicht sogar sollten) Sie Teile verwenden. 
+In Büchern kann man die \texttt{part} und \texttt{chapter} Struktur-Befehle verwenden. Ein Part ist ein "`Teil"' eines Buches. Wenn Sie nicht wissen, ob und wo Sie Teile verwenden sollten, tun Sie es lieber nicht.
 
 Die Unterteilung von Büchern in "`Parts"' geschieht meistens dann, wenn das Buch verschiedene Themenbereiche abdeckt, die einer Trennung bedürfen. Kapitel strukturieren Inhalte, aber trennen sie nicht. Letztlich bestimmt der Autor, ob er eine Einteilung seines Buches haben möchte. Trotzdem sollte er mit der Einteilung in "`Parts"' eher sparsam umgehen.
 
@@ -248,7 +248,7 @@ Man muss beachten, dass die \texttt{book}-Klasse davon ausgeht, dass der Text be
 
 \subsubsection{Haupt- und Nebenbereiche}
 
-Die \texttt{book}-Klasse hat zusätzlich zur Struktur-Einteilung noch eine Einteilung in front-, main- und backmatter Bereiche. Diese Bereiche trennen zum Beispiel die Inhalts- und Abbildungsverzeichnisse von den Hauptteilen, sowie auch von den Anhängen, Literaturverzeichnis und Index. Ein Beispiel:
+Die \texttt{book}-Klasse hat zusätzlich zur Struktur-Einteilung noch eine Einteilung in front-, main- und backmatter-Bereiche. Diese Bereiche trennen zum Beispiel die Inhalts- und Abbildungsverzeichnisse von den Hauptteilen, sowie auch von den Anhängen, Literaturverzeichnis und Index. Ein Beispiel:
 
 \footnotesize
 \begin{verbatim}
@@ -297,7 +297,7 @@ Die front-, main- und backmatter Befehle funktionieren nicht in der Artikel Klas
 
 \subsection{\texttt{report}-Klasse}\index{report-Klasse}
 
-Ein Report ist -- wie ein Artikel -- eher für kürzere Texte gedacht. Er hat ein \texttt{abstract}-Environment, kann allerdings Kapitel enthalten, was der Hauptunterschied zum Artikel ist. Abstract wird auf einer eigenen Seite angezeigt. Die Kapitel beginnen auf einer neuen Seite, aber nicht notwendigerweise auf einer ungeraden Seite. 
+Ein Report ist -- wie ein Artikel -- eher für kürzere Texte gedacht. Er hat ein \texttt{abstract}-Environment, kann allerdings Kapitel enthalten, was der Hauptunterschied zum Artikel ist. Der Abstract-Abschnitt wird auf einer eigenen Seite angezeigt. Die Kapitel beginnen auf einer neuen Seite, aber nicht notwendigerweise auf einer ungeraden Seite. 
 
 
 \subsection{\texttt{letter}-Klasse}\index{letter-Klasse}
@@ -316,7 +316,7 @@ Das Inhaltsverzeichnis wird von \LaTeX\ automatisch erzeugt, wenn der Befehl
 \begin{verbatim}
 \tableofcontents
 \end{verbatim}
-gefunden wurde. Das Inhaltsverzeichnis ist eine \LaTeX\ Datei, die den Namen Ihrer Datei hat aber die Endung "`.toc"'\footnote{toc = table of content} besitzt. Diese toc-Datei wird genau an der Stelle in Ihr Dokument eingefügt, wo der \texttt{tableofcontents} Befehl steht. Sehen wir uns einen Teil des Inhaltsverzeichnis dieses Buches an:
+gefunden wurde. Das Inhaltsverzeichnis ist eine \LaTeX\ Datei, die den Namen Ihrer Datei hat aber die Endung "`.toc"'\footnote{toc = table of content} besitzt. Diese toc-Datei wird genau an der Stelle in Ihr Dokument eingefügt, wo der \texttt{tableofcontents} Befehl steht. In der \texttt{book}-Klasse bekommt das Inhaltsverzeichnis eine eigene Seite. Sehen wir uns einen Teil des Inhaltsverzeichnis dieses Buches an:
 
 \footnotesize
 \begin{verbatim}
@@ -329,15 +329,15 @@ gefunden wurde. Das Inhaltsverzeichnis ist eine \LaTeX\ Datei, die den Namen Ihr
 \end{verbatim}
 \normalsize
 
-\LaTeX\ schreibt, während der Abarbeitung des Dokuments, einfach die Überschriften der Kapitel, Sections und Subsections in eine Datei. Und zwar mit den zu diesem Zeitpunkt gültigen Seitenzahlen und setzt den Befehl \texttt{contentsline} davor. Das ist -- wie Sie sich vorstellen können -- ein relativ naives Vorgehen. Nehmen wir an, wir hätten bereits ein längeres Dokument geschrieben und entschließen uns dann erst ein Inhaltsverzeichnis anzulegen. Wir setzen den Table of Contents Befehl an den Anfang des Codes und sehen uns an, was dabei heraus kommt. Im ersten Durchlauf gar nichts. Denn die toc-Datei war gar nicht existent und somit steht an der Stelle, wo das Inhaltsverzeichnis stehen sollte, gar nichts. Das bedeutet, nach der ersten Ausführung besitzt Ihr Dokument zwar kein Inhaltsverzeichnis, jedoch ist die toc-Datei gefüllt. Starten wir einen erneuten Durchlauf, so erscheint ein Inhaltsverzeichnis mit der zu diesem Zeitpunkt existenten toc-Datei. Das ist allerdings die toc-Datei aus dem vorherigen Lauf, weil das Inhaltsverzeichnis  \textbf{VOR} den Kapitel und Section Angaben steht (wie das für Inhaltsverzeichnisse üblicherweise der Fall ist). Deshalb stehen da noch die Seitenzahlen aus dem vorherigen Lauf. Zu diesem Zeitpunkt war aber noch kein Inhaltsverzeichnis da, also sind die Seitenzahlen so, als gäbe es kein Inhaltsverzeichnis.
+\LaTeX\ schreibt, während der Abarbeitung des Dokuments, einfach die Überschriften der Kapitel, Sections und Subsections in eine Datei. Und zwar mit den zu diesem Zeitpunkt gültigen Seitenzahlen und setzt den Befehl \texttt{contentsline} davor. Das ist -- wie Sie sich vorstellen können -- ein relativ naives Vorgehen. Nehmen wir an, wir hätten bereits ein längeres Dokument geschrieben und entschließen uns dann erst ein Inhaltsverzeichnis anzulegen. Wir setzen den Table of Contents Befehl an den Anfang des Codes und sehen uns an, was dabei heraus kommt. Im ersten Durchlauf gar nichts. Denn die toc-Datei war gar nicht existent und somit steht an der Stelle, wo das Inhaltsverzeichnis stehen sollte, gar nichts. Das bedeutet, nach der ersten Ausführung besitzt Ihr Dokument zwar kein Inhaltsverzeichnis, jedoch ist die toc-Datei gefüllt. Starten wir einen erneuten Durchlauf, so erscheint ein Inhaltsverzeichnis mit der zu diesem Zeitpunkt existenten toc-Datei. Das ist allerdings die toc-Datei aus dem vorherigen Lauf, weil das Inhaltsverzeichnis  \textbf{VOR} den Kapitel und Section Angaben steht (wie das für Inhaltsverzeichnisse üblicherweise der Fall ist). Deshalb stehen da noch die Seitenzahlen aus dem vorherigen Lauf. Zu diesem Zeitpunkt war aber noch kein Inhaltsverzeichnis da, also sind die Seitenzahlen verschoben, so als gäbe es kein Inhaltsverzeichnis.
 
 Erst mit dem dritten Lauf hat das Inhaltsverzeichnis die korrekten Seitenzahlen, weil sich das Inhaltsverzeichnis auf seine volle Länge erweitert und sämtliche nachfolgenden Seiten entsprechend weiter gerückt hat.
 
 Ich kann es nur noch einmal sagen: Diese Vorgehensweise ist naiv. Heute würde man erwarten, dass das Programm die Seitenzahlen im ersten Lauf in korrekter Weise darstellen kann. Doch das ist kein triviales Problem, denn die Länge des Inhaltsverzeichnis hat Einfluss auf die Position der Kapitel- und Abschnittsüberschriften. Aber es ist nicht unlösbar! 
 
-Man kann nur mutmaßen, warum Prof. Knuth sich nicht die Mühe machte, eine sofortige Berechnung der Seitenzahlen zu implementieren. Auf der anderen Seite kann argumentiert werden, dass die mehrfache Ausführung des \LaTeX-Compilers (besonders bei heutigen Computern) so wenig Zeit in Anspruch nimmt, dass es keine Rolle spielt, ob \LaTeX\ ein, zwei oder dreimal ausgeführt wird. Man muss es nur Bedenken.
+Man kann nur mutmaßen, warum Prof. Knuth sich nicht die Mühe machte, eine sofortige Berechnung der Seitenzahlen zu implementieren. Auf der anderen Seite kann argumentiert werden, dass die mehrfache Ausführung des \LaTeX-Compilers (besonders bei heutigen Computern) so wenig Zeit in Anspruch nimmt, dass es keine Rolle spielt, ob \LaTeX\ ein, zwei oder dreimal ausgeführt wird. Man muss es nur Bedenken und lieber \LaTeX\ einmal mehr ausführen.
 
-Die Art, wie das Inhaltsverzeichnis in \LaTeX\ aufgebaut wird, ist symptomatisch für alle anderen Systeme. Der Index, Tabellen- und Abbildungsverzeichnisse werden in der selben Art erzeugt. Beim Index kommt sogar noch hinzu, dass man das Tool \texttt{makeindex} zwischen dem ersten und zweiten \LaTeX\ Aufruf starten muss. Doch dazu später mehr. 
+Die Art, wie das Inhaltsverzeichnis in \LaTeX\ aufgebaut wird, ist symptomatisch für alle anderen Übersichten. Der Index, Tabellen- und Abbildungsverzeichnisse werden in der selben Art erzeugt. Beim Index kommt sogar noch hinzu, dass man das Tool \texttt{makeindex} zwischen dem ersten und zweiten \LaTeX\ Aufruf starten muss. Doch dazu später mehr. 
 
 Sie sollten für sich im Kopf behalten, dass es immer sinnvoll ist, wenn man mit \LaTeX\ arbeitet, es mehrfach zu starten. Wenn Sie die finale PDF-Version Ihrer Arbeit erzeugen, sollten Sie in der folgenden Reihenfolge vorgehen: (Nehmen wir an, Ihre Hauptdatei wäre master.tex)
 
@@ -345,13 +345,16 @@ Sie sollten für sich im Kopf behalten, dass es immer sinnvoll ist, wenn man mit
 \item \texttt{pdflatex master.tex} starten. 
 \item \texttt{bibtex master.aux} starten.
 \item \texttt{makeindex master.idx} starten.
-\item Noch drei Mal \texttt{pdflatex master.tex} starten. 
+\item Noch zwei Mal \texttt{pdflatex master.tex} starten. 
 \end{enumerate}
 Wenn Sie diesem Schema folgen, kann eigentlich nichts mehr schief gehen. Die Informationen von Kapiteln, Sections, Abbildungen und Tabellen, internen sowie Literatur Referenzen sollten nach dem letzten Start alle korrekt übernommen worden sein und auf die tatsächlichen Seiten-, Kapitel- und Formelnummern verweisen.
 
 \ding{229} Es kann sinnvoll sein, sich dafür ein Skript zu schreiben. 
 
-Sollten Sie mit dem TeXstudio arbeiten, reicht es, den Vorgang mit F1 zu starten. Ihre Literaturreferenzen werden automatisch erzeugt. \texttt{makeindex} können Sie direkt mit F12 aufrufen. Und dann noch dreimal F1. 
+Sollten Sie mit dem TeXstudio arbeiten, reicht es, den Vorgang mit F1 zu starten. Ihre Literaturreferenzen werden automatisch erzeugt. \texttt{makeindex} können Sie direkt mit F12 aufrufen. Und dann noch zweimal F1. Also:
+\begin{verbatim}
+F1, F12, F1, F1
+\end{verbatim}
 
 \section{Environments}\index{Environment}
 
@@ -363,7 +366,7 @@ Environments sind örtlich (im Sinne einer Textstelle) begrenzt von den Befehlen
 ...
 \end{name}
 \end{verbatim}
-wobei \texttt{name} ein Platzhalter ist für den Namen des entsprechenden Environments. Wir werden viele Environments kennenlernen, die für die verschiedenen Formatierungen verwendet werden. Dabei wird immer nur der Name des Environments erwähnt und dabei implizit vorausgesetzt, dass Sie dieses Environment mit den begin- und end-Befehlen starten und enden lassen. Hier einige Beispiele für Environments:
+wobei \texttt{name} ein Platzhalter für den Namen des entsprechenden Environments ist. Wir werden viele Environments kennenlernen, die für die verschiedenen Formatierungen verwendet werden. Dabei wird immer nur der Name des Environments erwähnt und dabei implizit vorausgesetzt, dass Sie dieses Environment mit den begin- und end-Befehlen starten und enden lassen. Hier einige Beispiele für Environments:
 
 \subsection{\texttt{quote} -- Zitate}\index{Zitat} \index{quote-Umgebung}
 
@@ -479,4 +482,35 @@ Im Fall der American Mathematical Society gibt es die \texttt{amsbook}-Klasse, d
 Aber, um es noch einmal zu sagen: Ich bin kein Jurist, also sind alle Hinweise hier ohne Gewähr. Wenn Sie eine kommerzielle Klasse einsetzen möchten, machen Sie sich bitte selbst schlau. 
 
 
+\section{Source Code und Algorithmen}
 
+Es gibt verschiedene Möglichkeiten, wie Sie Source Code und Algorithmen darstellen können. Der einfachste Weg ist die im Default enthaltene \texttt{verbatim}-Umgebung zu verwenden. Diese wird auch in diesem Buch oft verwendet, um \LaTeX\ Befehle darzustellen.
+
+\begin{verbatim}
+Die verbatim-Umgebung lässt es zu, Text genauso in das Dokument
+zu übernehmen, wie er geschrieben wurde. Daher wird in aller
+Regel auch ein Monospace-Font verwendet. 
+\end{verbatim}
+manche Dokumentklassen nutzen keinen Monospace Font für den \texttt{verbatim}-Bereich. Ob Ihre Source-Code und Algorithmen dann noch klar dargestellt werden, müssen Sie entscheiden. 
+
+\subsection{\texttt{lstlisting}-Paket}
+
+Zur schöneren Darstellung von Source-Code kann das \texttt{lstlisting}-Paket verwendet werden. In Abbildung \ref{fig:java} dargestellter Java Code ist mit diesem Paket formatiert.
+
+\begin{figure}[h]
+\begin{lstlisting}
+public class AppFX extends javafx.application.Application 
+      implements EventHandler<WindowEvent> {
+
+    public static void main(String[] args) throws Exception {
+        launch(args);
+    }
+}
+\end{lstlisting}
+\caption{Beispiel Java Code}
+\label{fig:java}
+\end{figure}
+
+Es werden vom \texttt{lstlisting}-Paket die folgenden Sprachen unterstützt:
+
+ABAP, ACSL, Ada, Algol, Ant, Assembler, Awk, bash, Basic, C, C++, Caml, Clean, Cobol, Comal, csh, Delphi, Eiffel, Elan, erlang, Euphoria, Fortran, GCL, Gnuplot, Haskell, HTML, IDL, inform, Java, JVMIS, ksh, Lisp, Logo, make, Mathematika, Matlab, Mercury, MetaPost, Miranda, Mizar, ML, Modelica, Modula-2, MuPAD, NASTRAN, Oberon-2, OCL, Octave, Oz, Pascal, Perl, PHP, PL/1, Plasm, POV, Prolog, Promela, Python, R, Reduce, Rexx, RSL, Ruby, S, SAS, sh, SHELXL, Simula, SQL, tcl, TeX, VBScript, Verilog, VHDL, VRML, XML, XSLT.
