@@ -10,6 +10,23 @@ TODO label und ref.
 
 TODO
 
+\section{Text-Formatierung}
+
+\LaTeX\ formatiert Text grundsätzlich im Blocksatz. Um die korrekte Zeilenlänge zu erreichen, wird in erster Linie die Silbentrennung (engl. hyphenation) verwendet. Sind die Wortzwischenräume trotz Silbentrennung zu groß, kommen weitere Formatierungshilfen zum Einsatz, deren Verhalten man anhand diverser Parameter modifizieren kann.
+
+\subsection{Blocksatz und seine Parameter}
+
+TODO
+
+\subsection{Flattersatz}
+
+\begin{flushleft}
+In einigen Dokumenten ist der Blocksatz unerwünscht. Oft ist auch gerade die Silbentrennung nicht gewollt. Verlage bevorzugen Texte im linksbündigen Flattersatz ohne Silbentrennung bei einer 12pt Courier Schrift mit 30 Zeilen und maximal 60 Zeichen pro Zeile. Möchte man dies erfüllen, steht man vor dem Problem, dass \LaTeX\ großen Wert darauf legt, dass Absätze rechteckig sind und hierfür Silbentrennung und dynamische Wortabstände einsetzt, um dies zu erreichen. 
+
+Dieses Verhalten kann man ausschalten, wenn man (siehe Abschnitt \ref{sect:ausrichtung}) das \texttt{flushleft}-Environment verwendet. Dies ist allerdings meist nur praktikabel, wenn man nicht mehr als einen Absatz so darstellen möchte. Will man ein gesamtes Dokument auf Flatterstatz umstellen, so gibt es den Befehl \texttt{flushleft}, der dies für jeglichen folgenden Text einstellt. 
+
+\end{flushleft}
+
 
 \section{Aufzählungen}
 
